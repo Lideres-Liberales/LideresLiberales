@@ -1,0 +1,249 @@
+/* #region general */
+* {
+    box-sizing: border-box;
+
+    --base-color-0: #0067FF;
+    --base-color-1: #005EE9;
+    --base-color-2: #0F172A;
+    --base-color-3: #364151;
+    --base-color-4: #E7F6FF;
+    --base-color-5: #FFFFFF;
+    --base-color-6: #D1DAE5;
+    --base-color-7: #070614;
+    --base-color-8: #222222;
+
+    --header-height: 4rem;
+
+    --margin-vertical: 1rem;
+    --margin-horizintal: 2rem;
+
+    --padding-vertical: 1rem;
+    --padding-horizintal: 1.25rem;
+}
+
+html, body, header {
+    display: flex;
+}
+
+html, body {
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
+
+header, footer {
+    width: 100%;
+}
+
+main {
+    flex: 1;
+
+    width: 100%;
+    max-width: calc(1200px + 2 * var(--padding-horizintal));
+
+    margin: 0 auto;
+    padding: var(--padding-vertical) var(--padding-horizintal);
+}
+
+/* #endregion*/
+
+/* #region header */
+.header {
+    --size: 7.625rem;
+
+    --button-width: 3rem;
+    --button-height: 3rem;
+
+    --button-background-color: var(--base-color-2);
+    --button-background-color-hover: var(--base-color-3);
+
+    width: 100%;
+    max-width: calc(1200px + 2 * var(--padding-horizintal));
+
+    margin: 0 auto;
+    padding: var(--padding-vertical) var(--padding-horizintal);
+
+    position: relative;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+
+.d-frex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.logo {
+    height: 90px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(var(--padding-horizintal), var(--padding-vertical));
+}
+
+.logo p {
+    display: inherit;
+
+    margin: 0;
+    padding: 0 1rem;
+
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: #1c2d4f;
+}
+
+.nav-bar {
+    width: 100%;
+}
+
+.menu-btn {
+    background-color: var(--base-color-3);
+    color: var(--base-color-5);
+
+    list-style-type: none;
+    border: none;
+
+    width: var(--button-width);
+    height: var(--button-height);
+
+    margin: calc(0.5 * (var(--size) - var(--button-height)) - var(--padding-vertical));
+    margin-left: calc(100% - var(--button-width) - var(--padding-horizintal));
+    margin-right: var(--padding-horizintal);
+
+    padding: var(--padding-vertical) var(--padding-horizintal);
+}
+
+.nav-menu {
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    display: flex;
+    height: 3rem;
+
+    list-style: none;
+    background-color: var(--base-color-3);
+    color: var(--base-color-5);
+
+    margin: calc(0.25 * var(--margin-vertical)) calc(0.25 * var(--margin-horizintal));
+    padding: 0;
+}
+
+.nav-item:hover {
+    background-color: var(--base-color-6);
+}
+
+.nav-item a {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: start;
+
+    padding-left: var(--padding-horizintal);
+
+    vertical-align: middle;
+    text-decoration: none;
+
+    color: white;
+    font-family: "Montserrat", sans-serif;
+}
+
+@media (min-width:768px) {
+    .logo p {
+        display: none;
+    }
+
+    .menu-btn {
+        display: none;
+    }
+
+    .nav-menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        height: 90px;
+    }
+
+    .nav-item {
+        border-radius: 5px;
+
+        background-color: inherit;
+
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-item a {
+        align-items: center;
+        justify-content: center;
+
+        margin: 0;
+        padding: 0 1rem;
+
+        color: var(--base-color-3);
+    }
+}
+
+@media (min-width:1150px) {
+    .logo p {
+        display: inherit;
+    }
+}
+
+/* collapsibility @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+@media (min-width:768px) {
+
+    .collapse:not(.show),
+    .collapse.show {
+        display: flex !important;
+    }
+}
+
+.collapse:not(.show) {
+    display: none
+}
+
+.collapsing {
+    height: 0;
+    overflow: hidden;
+    transition: height .40s ease
+}
+
+
+/* #endregion */
+
+/* #region footer */
+footer {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+
+    line-height: 24.6px;
+    color: #000080;
+
+    padding: 20px 0;
+}
+
+footer p {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    margin: 0;
+    height: 60px;
+}
+
+/* #endregion */

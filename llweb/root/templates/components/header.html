@@ -1,0 +1,22 @@
+{% load static %}
+
+<header id="nav-header" class="header">
+
+    <div class="logo d-frex-row">
+        <img src="{% static 'img/icons/cropped-Logo-Oficial-90x90.png' %}" alt="logo_liberes_liberales">
+        <p class="d-frex-row">LIDERES LIBERALES</p>
+    </div>
+
+    <nav class="nav-bar">
+        <button id="button-toggler" data-collapsed="true" class="menu-btn"><span></span></button>
+
+        <ul id="navbar-collapse" class="nav-menu collapse">
+            <li class="nav-item"><a href="{% url 'home' %}">INICIO</a></li>
+            <li class="nav-item"><a href="{% url 'leaders' %}">LIDERES LIBERALES</a></li>
+            <li class="nav-item"><a href="{% url 'join' %}">SUMATE</a></li>
+            <li class="nav-item"><a href="{% url 'news' %}">PRENSA</a></li>
+        </ul>
+
+    </nav>
+
+</header>
