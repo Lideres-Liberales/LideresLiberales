@@ -4,19 +4,35 @@
 
     <div class="logo d-frex-row">
         <img src="{% static 'img/icons/cropped-Logo-Oficial-90x90.png' %}" alt="logo_liberes_liberales">
-        <p class="d-frex-row">LIDERES LIBERALES</p>
+        <p class="d-frex-row">LIDERES<br>LIBERALES</p>
     </div>
 
     <nav class="nav-bar">
-        <button id="button-toggler" data-collapsed="true" class="menu-btn"><span></span></button>
+        <button id="button-toggler" data-collapsed="true" class="menu-btn">
+            <i class="fa-2x fa-solid fa-bars"></i>
+        </button>
 
-        <ul id="navbar-collapse" class="nav-menu collapse">
+        <ul id="navbar-collapse" class="nav-menu collapse-v">
+            <br>
             <li class="nav-item"><a href="{% url 'home' %}">INICIO</a></li>
             <li class="nav-item"><a href="{% url 'leaders' %}">LIDERES LIBERALES</a></li>
-            <li class="nav-item"><a href="{% url 'join' %}">SUMATE</a></li>
-            <li class="nav-item"><a href="{% url 'news' %}">PRENSA</a></li>
+            <li class="nav-item"><a href="{% url 'join' %}">ASOCIATE</a></li>
+            <li class="nav-item"><a href="{% url 'ethics' %}">VALORES</a></li>
+            <li class="nav-item"><a href="{% url 'events' %}">EVENTOS</a></li>
         </ul>
 
     </nav>
+
+    <div id="nav-search" class="nav-search d-frex-row">
+
+        <form id="nav-search-collapse" class="collapse-h">
+            <input id="inputSearch" class="nav-search-input" type="text" placeholder="Escribe algo...">
+        </form>
+
+        <button id="search-toggler" data-collapsed="true" class="search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+    </div>
 
 </header>

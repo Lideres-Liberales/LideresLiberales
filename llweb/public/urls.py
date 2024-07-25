@@ -18,8 +18,13 @@ urlpatterns = [
         name='join'
     ),
     path(
-        route='novedades',
-        view=News.as_view(),
-        name='news'
+        route='valores',
+        view=Ethics.as_view(),
+        name='ethics'
+    ),
+    path(
+        route='eventos',
+        view=Events.as_view(),
+        name='events'
     ),
 ]

@@ -15,5 +15,9 @@ class Join(TemplateView):
     template_name = 'join.html'
 
 
-class News(TemplateView):
-    template_name = 'news.html'
+class Ethics(TemplateView):
+    template_name = 'ethics.html'
+
+
+class Events(TemplateView):
+    template_name = 'events.html'

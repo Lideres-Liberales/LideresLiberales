@@ -1,4 +1,4 @@
-class NavBarCollapsebles {
+class Collapsebles {
     constructor(varargin) {
         this.button = document.getElementById(varargin.button);
         this.container = document.getElementById(varargin.container);
@@ -15,33 +15,6 @@ class NavBarCollapsebles {
             this.hide(this.container);
         }
     }
-
-    show = element => {
-        element.classList.remove('collapse');
-        element.classList.add('collapsing');
-        element.style.height = '0px';
-
-        this.executeAfterTransition(() => {
-            element.classList.remove('collapsing');
-            element.classList.add('collapse', 'show');
-            element.style.height = '';
-        }, element);
-
-        element.style.height = element.scrollHeight + 'px';
-    };
-
-    hide = element => {
-        element.style.height = element.scrollHeight + 'px';
-        element.offsetHeight;
-        element.classList.add('collapsing');
-        element.classList.remove('collapse', 'show');
-
-        element.style.height = '';
-        this.executeAfterTransition(() => {
-            element.classList.remove('collapsing');
-            element.classList.add('collapse');
-        }, element);
-    };
 
     executeAfterTransition = (callback, transitionElement) => {
         const emulatedDuration = this.getTransitionDurationFromElement(transitionElement) + 5;
@@ -75,14 +48,88 @@ class NavBarCollapsebles {
     };
 }
 
+class NavBarCollapseblesVertical extends Collapsebles {
+    constructor(varargin) {
+        super(varargin)
+    }
+
+    show = element => {
+        element.classList.remove('collapse-v');
+        element.classList.add('collapsing-v');
+        element.style.height = '0px';
+
+        this.executeAfterTransition(() => {
+            element.classList.remove('collapsing-v');
+            element.classList.add('collapse-v', 'show');
+            element.style.height = '';
+        }, element);
+
+        element.style.height = element.scrollHeight + 'px';
+    };
+
+    hide = element => {
+        element.style.height = element.scrollHeight + 'px';
+        element.offsetHeight;
+        element.classList.add('collapsing-v');
+        element.classList.remove('collapse-v', 'show');
+
+        element.style.height = '';
+        this.executeAfterTransition(() => {
+            element.classList.remove('collapsing-v');
+            element.classList.add('collapse-v');
+        }, element);
+    };
+}
+
+class NavBarCollapseblesHorinzontal extends Collapsebles {
+    constructor(varargin) {
+        super(varargin)
+    }
+
+    show = element => {
+        element.classList.remove('collapse-h');
+        element.classList.add('collapsing-h');
+        element.style.width = '0px';
+
+        this.executeAfterTransition(() => {
+            element.classList.remove('collapsing-h');
+            element.classList.add('collapse-h', 'show');
+            element.style.width = '';
+        }, element);
+
+        element.style.width = element.scrollWidth + 'px';
+        console.log(element.style.width)
+    }
+
+    hide = element => {
+        element.style.width = element.scrollWidth + 'px';
+        element.offsetWidth;
+        element.classList.add('collapsing-h');
+        element.classList.remove('collapse-h', 'show');
+
+        element.style.width = '';
+        this.executeAfterTransition(() => {
+            element.classList.remove('collapsing-h');
+            element.classList.add('collapse-h');
+        }, element);
+    }
+}
 
 (() => {
     const navHeader = document.getElementById('nav-header');
+    const navSearch = document.getElementById('nav-search');
 
     if (navHeader) {
-        new NavBarCollapsebles({
+        new NavBarCollapseblesVertical({
             button: 'button-toggler',
-            container: 'navbar-collapse',
+            container: 'navbar-collapse'
         });
+    }
+
+    if (navSearch) {
+        new NavBarCollapseblesHorinzontal({
+            button: 'search-toggler',
+            container: 'nav-search-collapse'
+        })
     }
 })();
