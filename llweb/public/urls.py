@@ -8,9 +8,9 @@ urlpatterns = [
         name='home'
     ),
     path(
-        route='lideres-liberales',
-        view=Leaders.as_view(),
-        name='leaders'
+        route='gabinete',
+        view=Cabinet.as_view(),
+        name='cabinet'
     ),
     path(
         route='sumate',
@@ -18,9 +18,9 @@ urlpatterns = [
         name='join'
     ),
     path(
-        route='valores',
-        view=Ethics.as_view(),
-        name='ethics'
+        route='prensa',
+        view=News.as_view(),
+        name='news'
     ),
     path(
         route='eventos',

@@ -98,7 +98,6 @@ class NavBarCollapseblesHorinzontal extends Collapsebles {
         }, element);
 
         element.style.width = element.scrollWidth + 'px';
-        console.log(element.style.width)
     }
 
     hide = element => {

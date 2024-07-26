@@ -83,6 +83,15 @@ main {
     transform: translate(var(--nav-h), var(--nav-v));
 }
 
+.logo a {
+    display: flex;
+    text-decoration: none;
+}
+
+.logo img {
+    height: var(--nav-icon-576);
+}
+
 .logo p {
     margin: 0;
     padding: 0 var(--nav-v);
@@ -207,6 +216,10 @@ main {
     .logo {
         height: var(--nav-icon-992);
         transform: translate(var(--nav-h), var(--nav-v));
+    }
+
+    .logo a img {
+        height: var(--nav-icon-992);
     }
 
     .logo p {

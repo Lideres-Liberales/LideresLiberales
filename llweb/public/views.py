@@ -7,16 +7,16 @@ class Home(TemplateView):
     template_name = 'home.html'
 
 
-class Leaders(TemplateView):
-    template_name = 'leaders.html'
+class Cabinet(TemplateView):
+    template_name = 'cabinet.html'
 
 
 class Join(TemplateView):
     template_name = 'join.html'
 
 
-class Ethics(TemplateView):
-    template_name = 'ethics.html'
+class News(TemplateView):
+    template_name = 'news.html'
 
 
 class Events(TemplateView):
