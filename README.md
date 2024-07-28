@@ -1,6 +1,5 @@
 # LideresLiberales
 
-Proyecto de software 2024 - Backend
 GitFlow en nuestro Proyecto
 
 Este repositorio sigue el modelo de branching GitFlow para gestionar el desarrollo de software. GitFlow es un flujo de trabajo popular en Git que define una estructura de ramificación para proyectos de software.
