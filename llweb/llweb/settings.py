@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'representacion',
     'asociacionCivil',
     'miembros',
+    'persona',
 ]
 
 MIDDLEWARE = [
