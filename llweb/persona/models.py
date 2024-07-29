@@ -42,3 +42,22 @@ class Persona(models.Model):
 
     def __str__(self):
         return f'{self.nombre} {self.apellido}'
+    
+class Miembro(Persona):
+    
+    class Meta:
+        verbose_name = 'Miembro'
+        verbose_name_plural = 'Miembros'
+
+class Representante(Persona):
+    
+    class Meta:
+        verbose_name = 'Representante'
+        verbose_name_plural = 'Representantes'
+
+class AsociacionCivil(Persona):
+    
+    class Meta:
+        verbose_name = 'Asociación Civil'
+        verbose_name_plural = 'Asociaciones Civiles'
+  
