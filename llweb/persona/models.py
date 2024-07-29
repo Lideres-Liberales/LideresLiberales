@@ -41,4 +41,4 @@ class Persona(models.Model):
         abstract = True
 
     def __str__(self):
-        return f'{self.nombre}'
+        return f'{self.nombre} {self.apellido}'

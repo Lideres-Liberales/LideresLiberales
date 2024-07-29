@@ -6,5 +6,4 @@ from persona.models import Persona
 class Representacion(Persona):
     pass
 
-    def __str__(self):
-        return f'{self.nombre} {self.apellido}'
+    
