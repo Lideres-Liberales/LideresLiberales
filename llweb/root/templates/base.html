@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
     <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    {% block css %}{% endblock %}
 
     <link rel="stylesheet" href="{% static 'externals/fontawesome-free-660-web/css/all.css' %}">
 
@@ -25,7 +26,7 @@
     {% block content %}{% endblock %}
     {% include "components/footer.html" %}
 
-
+    {% block javascript %}{% endblock %}
     <script src="{% static 'js/nav-bar.js' %}"></script>
 </body>
 

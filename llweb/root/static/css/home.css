@@ -1,0 +1,54 @@
+/* #region home */
+.home-boxes {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: minmax(100px, auto);
+    grid-gap: 2rem;
+}
+
+.box-item {
+    display: flex;
+    flex-direction: column;
+
+    background-color: #1c2d4f;
+    color: white;
+
+    border-radius: 45px;
+    padding: 20px;
+
+    align-items: center;
+    text-align: center;
+}
+
+.box-item img {
+    max-width: 250px;
+    height: auto;
+
+    padding: 20px;
+}
+
+.box-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.box-text {
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+.box-title, .box-text {
+    text-transform: uppercase;
+}
+
+.box-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.box-button {
+    text-transform: uppercase;
+    padding: 10px 20px;
+}
+
+/* #endregion */

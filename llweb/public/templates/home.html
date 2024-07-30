@@ -1,8 +1,58 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
 {% block content %}
-    <main>
-        <h1>home</h1>
-    </main>
+<main>
+    <h1>home</h1>
+
+    <div class="home-boxes">
+        <div class="box-item">
+            <img src="{% static 'img/Logo-Oficial-mono-1024x1024.png' %}" alt="liberes_liberales">
+            <div class="box-body">
+                <h2 class="box-title">milita desde internet</h2>
+                <p class="box-text">
+                    lideres liberales cuenta con presencia en todas las redes sociales y es por eso que
+                    participamos activamente promoviendo el dialogo y el DEBATE, asi como encuentros y
+                    eventos virtuales de interes y relevancia para los seguidores de las ideas de la
+                    libertad
+                </p>
+                <div class="box-button-container">
+                    <button class="box-button">próximos eventos online</button>
+                </div>
+            </div>
+        </div>
+        <div class="box-item">
+            <img src="{% static 'img/Logo-Oficial-mono-1024x1024.png' %}" alt="liberes_liberales">
+            <div class="box-body">
+                <h2 class="box-title">milita en la calle</h2>
+                <p class="box-text">
+                    fomentamos la militancia en la calle es por eso que contamos con varios puntos de
+                    encuentro actividades y presencia en cada acto de figuras politicas o causas a favor
+                    de las ideas de la libertad.
+                </p>
+                <div class="box-button-container">
+                    <button class="box-button">próximos eventos presenciales</button>
+                </div>
+            </div>
+        </div>
+        <div class="box-item">
+            <img src="{% static 'img/Logo-Oficial-mono-1024x1024.png' %}" alt="liberes_liberales">
+            <div class="box-body">
+                <h2 class="box-title">diario lideres liberales</h2>
+                <p class="box-text">
+                    mantenete informado de las ultimas novedades a traves de nuestro newsletter en el
+                    que podras estar al tanto de los ultimos sucesos politicos y de la agrupacion.
+                </p>
+                <div class="box-button-container">
+                    <button class="box-button">subscribite al newsletter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
 {% endblock %}
