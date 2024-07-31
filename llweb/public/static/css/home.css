@@ -1,0 +1,118 @@
+/* #region home */
+.home-boxes {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: minmax(100px, auto);
+    grid-gap: 2rem;
+}
+
+.box-item {
+    display: flex;
+    flex-direction: column;
+
+    background-color: #1c2d4f;
+    color: white;
+
+    border-radius: 2.8rem;
+    padding: 1.25rem 2rem;
+}
+
+.box-image {
+    align-items: center;
+    text-align: center;
+}
+
+.box-image img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+}
+
+.box-body {
+    width: 100%;
+    height: 100%;
+}
+
+.box-text {
+    line-height: 1.5rem;
+}
+
+.box-title,
+.box-text {
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+}
+
+.box-button-container,
+.box-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-button {
+    --size-button: 0.9125rem;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: var(--size-button);
+    font-weight: 700;
+    text-transform: uppercase;
+
+    height: calc(2.33 * var(--size-button));
+    border-radius: calc(1.165 * var(--size-button));
+
+    background-color: #6c819b;
+    color: white;
+
+    padding: calc(1.165 * var(--size-button)) calc(1.2815 * var(--size-button));
+}
+
+.box-button:hover {
+    cursor: pointer;
+    background-color: #ffbd59;
+}
+
+@media (min-width:768px) {
+    .box-item {
+        padding: 1.25rem;
+        flex-direction: row;
+    }
+
+    .box-image {
+        width: 33.33333333333333%;
+    }
+
+    .box-body {
+        width: 66.66666666666666%;
+    }
+
+    .box-title {
+        font-size: 1.7rem;
+        margin: 0.9125rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .box-text {
+        font-size: 0.9125rem;
+        margin: 0.9125rem;
+        margin-top: 0;
+    }
+}
+
+@media (min-width:992px) {
+    .box-button-container {
+        justify-content: end;
+    }
+
+    .box-button {
+        --size-button: 1rem;
+
+        font-size: var(--size-button);
+        height: calc(2.33 * var(--size-button));
+        border-radius: calc(1.165 * var(--size-button));
+        padding: calc(1.165 * var(--size-button)) calc(1.2815 * var(--size-button));
+    }
+}
+
+
+/* #endregion */
