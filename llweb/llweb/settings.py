@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'llweb.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.' + getenv('DB_TYPE'),
-        'NAME': getenv('DB_NAME', BASE_DIR / 'db.sqlite3'),
+        'NAME': getenv('DB_NAME') or BASE_DIR / 'db.sqlite3',
         'USER': getenv('DB_USER'),
         'PASSWORD': getenv('DB_PASS'),
         'HOST': getenv('DB_HOST'),
