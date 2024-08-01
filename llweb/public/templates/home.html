@@ -10,7 +10,17 @@
     <div class="separator"></div>
 
     <div id="carousel_id" class="carousel slide my-3" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carousel_id" data-bs-slide-to="0" aria-label="Slide 1" class="active" aria-current="true"></button>
+            <button type="button" data-bs-target="#carousel_id" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carousel_id" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carousel_id" data-bs-slide-to="2" aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carousel_id" data-bs-slide-to="2" aria-label="Slide 5"></button>
+            <button type="button" data-bs-target="#carousel_id" data-bs-slide-to="2" aria-label="Slide 6"></button>
+        </div>
+
         <div class="carousel-inner">
+
             <div class="carousel-item carousel-comp active">
                 <img class="carousel-image" src="{% static 'img/placeholder.jpg' %}" alt="liberes_liberales">
                 <p class="carousel-paragraph">
@@ -18,6 +28,7 @@
                     y encuentros para fomentar la union y cooperacion del grupo.
                 </p>
             </div>
+
             <div class="carousel-item carousel-comp">
                 <img class="carousel-image" src="{% static 'img/placeholder.jpg' %}" alt="liberes_liberales">
                 <p class="carousel-paragraph">
@@ -27,6 +38,7 @@
                     un futuro prometedor.
                 </p>
             </div>
+
             <div class="carousel-item carousel-comp">
                 <img class="carousel-image" src="{% static 'img/placeholder.jpg' %}" alt="liberes_liberales">
                 <p class="carousel-paragraph">
@@ -35,6 +47,7 @@
                     encarnan los principios de la libertad.
                 </p>
             </div>
+
             <div class="carousel-item carousel-comp">
                 <img class="carousel-image" src="{% static 'img/placeholder.jpg' %}" alt="liberes_liberales">
                 <p class="carousel-paragraph">
@@ -43,6 +56,7 @@
                     demas.
                 </p>
             </div>
+
             <div class="carousel-item carousel-comp">
                 <img class="carousel-image" src="{% static 'img/placeholder.jpg' %}" alt="liberes_liberales">
                 <p class="carousel-paragraph">
@@ -50,6 +64,7 @@
                     encuentros para fomentar la union y cooperacion del grupo.
                 </p>
             </div>
+
             <div class="carousel-item carousel-comp">
                 <img class="carousel-image" src="{% static 'img/placeholder.jpg' %}" alt="liberes_liberales">
                 <p class="carousel-paragraph">
@@ -59,13 +74,17 @@
                     un futuro prometedor.
                 </p>
             </div>
+
         </div>
+
         <button class="carousel-control-prev" type="button" data-bs-target="#carousel_id" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         </button>
+
         <button class="carousel-control-next" type="button" data-bs-target="#carousel_id" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
         </button>
+
     </div>
 
     <div class="main-button-container">
@@ -75,6 +94,7 @@
     <div class="separator"></div>
 
     <div class="home-boxes">
+
         <div class="box-item">
             <div class="box-image">
                 <img src="{% static 'img/Logo-Oficial-mono-1024x1024.png' %}" alt="liberes_liberales">
@@ -92,6 +112,7 @@
                 </div>
             </div>
         </div>
+
         <div class="box-item">
             <div class="box-image">
                 <img src="{% static 'img/Logo-Oficial-mono-1024x1024.png' %}" alt="liberes_liberales">
@@ -108,6 +129,7 @@
                 </div>
             </div>
         </div>
+
         <div class="box-item">
             <div class="box-image">
                 <img src="{% static 'img/Logo-Oficial-mono-1024x1024.png' %}" alt="liberes_liberales">
@@ -123,6 +145,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 
 </main>
