@@ -12,8 +12,9 @@
     <link rel="stylesheet" href="{% static 'css/app.css' %}">
     {% block css %}{% endblock %}
 
+    <link rel="stylesheet" href="{% static 'externals/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'externals/fontawesome-free-660-web/css/all.css' %}">
-
+    
     <link rel="icon" href="{% static 'img/icons/cropped-Logo-Oficial-16x16.png' %}" sizes="16x16" />
     <link rel="icon" href="{% static 'img/icons/cropped-Logo-Oficial-32x32.png' %}" sizes="32x32" />
     <link rel="icon" href="{% static 'img/icons/cropped-Logo-Oficial-192x192.png' %}" sizes="192x192" />
@@ -28,6 +29,7 @@
 
     {% block javascript %}{% endblock %}
     <script src="{% static 'js/nav-bar.js' %}"></script>
+    <script src="{% static 'externals/bootstrap/js/bootstrap.min.js' %}"></script>
 </body>
 
 </html>
