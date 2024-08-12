@@ -1,8 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/cabinet.css' %}">
+{% endblock %}
+
+{% block javascript %}
+<script src="{% static 'js/modal.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 <main>
-    <h1>cabinet</h1>
+    {% if principal %}
+        {% include "components/node-official.html" with node_official=principal %}
+    {% endif %}
+
+    {% include "components/modal-official.html" %}
 </main>
 {% endblock %}

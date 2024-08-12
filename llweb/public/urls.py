@@ -13,6 +13,11 @@ urlpatterns = [
         name='cabinet'
     ),
     path(
+        route='gabinete/<int:pk>',
+        view=Official.as_view(),
+        name='public_official'
+    ),
+    path(
         route='sumate',
         view=Join.as_view(),
         name='join'
