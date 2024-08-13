@@ -1,7 +1,10 @@
+from collections import defaultdict
+
 from django.contrib import messages
 
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
+from django.views.generic import ListView
 from django.views.generic import DetailView
 
 from .models import Functionary
@@ -11,18 +14,23 @@ class Home(TemplateView):
     template_name = 'home.html'
 
 
-class Cabinet(DetailView):
-    template_name = 'cabinet.html'
-    context_object_name = 'principal'
+class Cabinet(ListView):
     model = Functionary
+    template_name = 'cabinet.html'
+    context_object_name = 'functionaries'
 
-    def get_object(self, queryset=None):
-        try:
-            objeto_ = Functionary.objects.get(position="CEO")
-        except Functionary.DoesNotExist:
-            objeto_ = None
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
 
-        return objeto_
+        functionaries = context['functionaries']
+        dic_for_height = defaultdict(list)
+
+        for functionary in functionaries:
+            dic_for_height[functionary.height].append(functionary)
+
+        context['functionaries'] = dict(dic_for_height)
+
+        return context
 
 
 class Official(DetailView):

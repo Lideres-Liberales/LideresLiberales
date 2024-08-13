@@ -11,10 +11,20 @@
 
 {% block content %}
 <main>
-    {% if principal %}
-        {% include "components/node-official.html" with node_official=principal %}
-    {% endif %}
+    <h1>Datos por Funcionario</h1>
 
-    {% include "components/modal-official.html" %}
+    <ul>
+        {% for nivel, functionaries in functionaries.items %}
+            <li>{{ nivel }}:
+                <ul>
+                    {% for functionary in functionaries %}
+                        <li>{{ functionary.name }}</li>
+                    {% empty %}
+                        <li>No hay functionaries.</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
 </main>
 {% endblock %}
