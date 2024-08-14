@@ -20,7 +20,7 @@ class Functionary(models.Model):
 
     image = models.ImageField(
         verbose_name='Avatar',
-        upload_to='functionaries'
+        upload_to='functionaries/avatar'
     )
 
     height = models.IntegerField(

@@ -11,20 +11,30 @@
 
 {% block content %}
 <main>
-    <h1>Datos por Funcionario</h1>
-
-    <ul>
-        {% for nivel, functionaries in functionaries.items %}
-            <li>{{ nivel }}:
-                <ul>
-                    {% for functionary in functionaries %}
-                        <li>{{ functionary.name }}</li>
-                    {% empty %}
-                        <li>No hay functionaries.</li>
-                    {% endfor %}
-                </ul>
-            </li>
+    {% for nivel, functionaries in functionaries.items %}
+    <div class="cabinet-row">
+        {% for functionary in functionaries %}
+        <div class="avatar-box" data-bs-toggle="modal" data-bs-target="#myModal"
+            data-url="{{ request.build_absolute_uri }}/{{ functionary.id }}"
+        >
+            <img class="avatar-img" src="{{functionary.image.url}}" alt="...">
+            <div class="avatar-name">{{functionary.name}}</div>
+            <div class="avatar-pos">{{functionary.position}}</div>
+        </div>
         {% endfor %}
-    </ul>
+    </div>
+    {% endfor %}
+
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true"
+        data-bs-dismiss="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center my-5"></div>
+            </div>
+        </div>
+    </div>
 </main>
 {% endblock %}
