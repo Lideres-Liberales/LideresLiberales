@@ -5,6 +5,7 @@ from django.views.generic import ListView
 from django.views.generic import DetailView
 
 from .models import Functionary
+from .models import PoliticalParty
 
 
 class Home(TemplateView):
@@ -19,6 +20,7 @@ class Cabinet(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['functionaries'] = self.list_to_dict(context['functionaries'])
+        context['politicalsParties'] = self.get_references()
 
         return context
 
@@ -29,6 +31,9 @@ class Cabinet(ListView):
             dic_for_height[functionary.height].append(functionary)
 
         return dict(dic_for_height)
+
+    def get_references(self):
+        return PoliticalParty.objects.all()
 
 
 class FunctionaryDetail(DetailView):

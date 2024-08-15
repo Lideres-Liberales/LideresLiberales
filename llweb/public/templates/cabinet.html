@@ -18,15 +18,25 @@
         <div class="avatar-box" data-bs-toggle="modal" data-bs-target="#functionary-modal"
             data-url="{{ request.build_absolute_uri }}/{{ functionary.id }}"
         >
-            <img class="avatar-img" src="{{functionary.image.url}}" alt="..."
+            <img class="avatar-img" src="{{ functionary.image.url }}" alt="..."
                 data-border-color="{{ functionary.political_party.color }}"
             >
-            <div class="avatar-name">{{functionary.name}}</div>
-            <div class="avatar-pos">{{functionary.position}}</div>
+            <div class="avatar-name">{{ functionary.name }}</div>
+            <div class="avatar-pos">{{ functionary.position }}</div>
         </div>
         {% endfor %}
     </div>
     {% endfor %}
+
+    <!-- political party rferences -->
+    <div class="color-list">
+        {% for politicalParty in politicalsParties.all %}
+            <div class="color-item">
+                <span class="color-box" data-box-color="{{politicalParty.color}}"></span>
+                {{ politicalParty.denomination }}
+            </div>
+        {% endfor %}
+    </div>
 
     <!-- modal with details of the functionary -->
     <div class="modal fade" id="functionary-modal" tabindex="-1" aria-labelledby="functionaryModalLabel" aria-hidden="true" data-bs-dismiss="modal">

@@ -45,4 +45,8 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('[data-border-color]').forEach(function(node) {
         node.style.borderColor = node.getAttribute('data-border-color');
     });
+
+    document.querySelectorAll('[data-box-color]').forEach(function(node) {
+        node.style.backgroundColor = node.getAttribute('data-box-color');
+    });
 });
