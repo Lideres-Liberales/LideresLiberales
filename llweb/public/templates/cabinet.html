@@ -18,7 +18,9 @@
         <div class="avatar-box" data-bs-toggle="modal" data-bs-target="#functionary-modal"
             data-url="{{ request.build_absolute_uri }}/{{ functionary.id }}"
         >
-            <img class="avatar-img" src="{{functionary.image.url}}" alt="...">
+            <img class="avatar-img" src="{{functionary.image.url}}" alt="..."
+                data-border-color="{{ functionary.political_party.color }}"
+            >
             <div class="avatar-name">{{functionary.name}}</div>
             <div class="avatar-pos">{{functionary.position}}</div>
         </div>
@@ -27,8 +29,7 @@
     {% endfor %}
 
     <!-- modal with details of the functionary -->
-    <div class="modal fade" id="functionary-modal" tabindex="-1" aria-labelledby="functionaryModalLabel" aria-hidden="true"
-        data-bs-dismiss="modal">
+    <div class="modal fade" id="functionary-modal" tabindex="-1" aria-labelledby="functionaryModalLabel" aria-hidden="true" data-bs-dismiss="modal">
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">

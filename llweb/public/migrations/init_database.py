@@ -1,4 +1,4 @@
-from datetime import time, date, timedelta
+from django.db import transaction
 
 from django.db import migrations, models
 from django.contrib.auth.models import Group
@@ -15,8 +15,58 @@ def clear_text(input_string):
 
 def set_up(apps, scheme_editor):
     # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    # % Functionaries                                                         %
+    # % Political Party                                                       %
     # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    parties = []
+
+    parties.append( # 0
+        PoliticalParty.objects.create(
+            denomination = 'Independiente - sin afiliacion',
+            color = '#7f7f7f'
+        )
+    )
+
+    parties.append( # 1
+        PoliticalParty.objects.create(
+            denomination = 'La Libertad Avanza',
+            color = '#6c4c99'
+        )
+    )
+
+    parties.append( # 2
+        PoliticalParty.objects.create(
+            denomination = 'Propuesta Republicana',
+            color = '#ffd700'
+        )
+    )
+
+    parties.append( # 3
+        PoliticalParty.objects.create(
+            denomination = 'Unión Cívica Radical',
+            color = '#e10019'
+        )
+    )
+
+    parties.append(
+        PoliticalParty.objects.create(
+            denomination = 'Partido Justicialista',
+            color = '#318ce7'
+        )
+    )
+
+    parties.append(
+        PoliticalParty.objects.create(
+            denomination = 'Unión por la Patria',
+            color = '#009fe3'
+        )
+    )
+
+    for party in parties:
+        party.save()
+
+    # # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    # # % Functionaries                                                         %
+    # # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     functionaries = []
 
     functionaries.append(
@@ -24,7 +74,8 @@ def set_up(apps, scheme_editor):
             name = 'Javier Milei',
             position = 'Presidente de la Nacion',
             image = 'functionaries/avatar/milei.png',
-            height = 0
+            height = 0,
+            political_party = parties[1]
         )
     )
 
@@ -33,7 +84,8 @@ def set_up(apps, scheme_editor):
             name = 'Victoria Villaruel',
             position = 'Vicepresidencia de la Nación',
             image = 'functionaries/avatar/villaruel.png',
-            height = 0
+            height = 0,
+            political_party = parties[1]
         )
     )
 
@@ -43,7 +95,8 @@ def set_up(apps, scheme_editor):
             position = 'Secretaria gral de presidencia',
             image = 'functionaries/avatar/karina.png',
             height = 1,
-            manager = functionaries[0]
+            manager = functionaries[0],
+            political_party = parties[1]
         )
     )
 
@@ -53,7 +106,8 @@ def set_up(apps, scheme_editor):
             position = 'Jefe de Gabinete',
             image = 'functionaries/avatar/francos.png',
             height = 1,
-            manager = functionaries[0]
+            manager = functionaries[0],
+            political_party = parties[1]
         )
     )
 
@@ -63,7 +117,8 @@ def set_up(apps, scheme_editor):
             position = 'Vocero',
             image = 'functionaries/avatar/adorni.png',
             height = 1,
-            manager = functionaries[0]
+            manager = functionaries[0],
+            political_party = parties[1]
         )
     )
 
@@ -73,7 +128,8 @@ def set_up(apps, scheme_editor):
             position = 'Ministerio de Capital Humano',
             image = 'functionaries/avatar/pettovello.png',
             height = 2,
-            manager = functionaries[3]
+            manager = functionaries[3],
+            political_party = parties[1]
         )
     )
 
@@ -83,7 +139,8 @@ def set_up(apps, scheme_editor):
             position = 'Ministerio de Defensa',
             image = 'functionaries/avatar/petri.png',
             height = 2,
-            manager = functionaries[3]
+            manager = functionaries[3],
+            political_party = parties[3]
         )
     )
 
@@ -93,7 +150,8 @@ def set_up(apps, scheme_editor):
             position = 'Ministro de Desregulación',
             image = 'functionaries/avatar/sturzenegger.png',
             height = 2,
-            manager = functionaries[3]
+            manager = functionaries[3],
+            political_party = parties[1]
         )
     )
 
@@ -103,7 +161,8 @@ def set_up(apps, scheme_editor):
             position = 'Ministerio de Economía',
             image = 'functionaries/avatar/caputo.png',
             height = 2,
-            manager = functionaries[3]
+            manager = functionaries[3],
+            political_party = parties[2]
         )
     )
 
@@ -113,7 +172,8 @@ def set_up(apps, scheme_editor):
             position = 'Ministerio de Justicia',
             image = 'functionaries/avatar/cuneo_libarona.png',
             height = 2,
-            manager = functionaries[3]
+            manager = functionaries[3],
+            political_party = parties[1]
         )
     )
 
@@ -123,7 +183,8 @@ def set_up(apps, scheme_editor):
             position = 'Ministerio de Relaciones Exteriores',
             image = 'functionaries/avatar/mondino.png',
             height = 2,
-            manager = functionaries[3]
+            manager = functionaries[3],
+            political_party = parties[1]
         )
     )
 
@@ -133,7 +194,8 @@ def set_up(apps, scheme_editor):
             position = 'Ministerio de Salud',
             image = 'functionaries/avatar/russo.png',
             height = 2,
-            manager = functionaries[3]
+            manager = functionaries[3],
+            political_party = parties[1]
         )
     )
 
@@ -143,13 +205,17 @@ def set_up(apps, scheme_editor):
             position = 'Ministerio de Seguridad',
             image = 'functionaries/avatar/bulrich.png',
             height = 2,
-            manager = functionaries[3]
+            manager = functionaries[3],
+            political_party = parties[2]
         )
     )
 
-    # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    # % Functionaries - Profiles                                              %
-    # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    for functionary in functionaries:
+        functionary.save()
+
+    # # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    # # % Functionaries - Profiles                                              %
+    # # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     profiles = []
 
     profiles.append(
@@ -342,6 +408,9 @@ def set_up(apps, scheme_editor):
         )
     )
 
+    for profile in profiles:
+        profile.save()
+
     # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     # % Root                                                                  %
     # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -354,12 +423,6 @@ def set_up(apps, scheme_editor):
         is_staff=True,
         is_active=True,
     )
-
-    # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    # % Save in data base                                                     %
-    # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    for functionary in functionaries:
-        functionary.save()
 
     root.set_password('root')
     root.save()

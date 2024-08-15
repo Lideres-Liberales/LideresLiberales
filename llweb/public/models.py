@@ -3,10 +3,28 @@ from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator
 
 
+class PoliticalParty(models.Model):
+    class Meta:
+        verbose_name = 'Partido Politico'
+        verbose_name_plural = 'Partidos Politicos'
+        db_table = 'public_political_parties'
+
+    denomination = models.CharField(
+        verbose_name='Denominacion',
+        max_length=100
+    )
+
+    color = models.CharField(
+        verbose_name='Color',
+        max_length=9
+    )
+
+
 class Functionary(models.Model):
     class Meta:
         verbose_name = 'Funcionario Publico'
         verbose_name_plural = 'Funcionarios Publicos'
+        db_table = 'public_functionaries'
 
     name = models.CharField(
         verbose_name='Nombre',
@@ -31,10 +49,17 @@ class Functionary(models.Model):
 
     manager = models.ForeignKey('self',
         verbose_name='Superior',
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         null=True,
         blank=True,
         related_name='team_members'
+    )
+
+    political_party = models.ForeignKey(
+        verbose_name='Partido Politico',
+        on_delete=models.PROTECT,
+        to=PoliticalParty,
+        related_name='political_party',
     )
 
     def clean_manager(self):
@@ -68,6 +93,7 @@ class FunctionaryPerfil(models.Model):
     class Meta:
         verbose_name = 'Funcionario Publico - Perfil'
         verbose_name_plural = 'Funcionarios Publicos - Perfiles'
+        db_table = 'public_functionary_profiles'
 
     biography = models.CharField(
         verbose_name='Biografia',
@@ -82,5 +108,5 @@ class FunctionaryPerfil(models.Model):
     functionary = models.OneToOneField(
         related_name='profile',
         to=Functionary,
-        on_delete=models.CASCADE
+        on_delete=models.PROTECT
     )

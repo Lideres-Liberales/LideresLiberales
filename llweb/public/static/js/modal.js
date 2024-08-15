@@ -17,14 +17,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const modal = document.getElementById('functionary-modal');
     const modalBody = document.querySelector('#functionary-modal .modal-body');
 
-    const modalXxx = `
+    const modalSpinner = `
         <div class="spinner-border" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
     `;
 
     new bootstrap.Modal(modal, { backdrop: false });
-    modalBody.innerHTML = modalXxx;
+    modalBody.innerHTML = modalSpinner;
 
     modal.addEventListener('shown.bs.modal', async function (event) {
         let body = document.querySelector('body');
@@ -37,6 +37,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     modal.addEventListener('hidden.bs.modal', async function () {
-        modalBody.innerHTML = modalXxx;
+        modalBody.innerHTML = modalSpinner;
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('[data-border-color]').forEach(function(node) {
+        node.style.borderColor = node.getAttribute('data-border-color');
     });
 });
