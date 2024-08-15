@@ -4,8 +4,11 @@ main {
 
 .modal {
     position: absolute !important;
-
     background-color: #ffffff80;
+}
+
+.text-justify {
+    text-align: justify;
 }
 
 .cabinet-row {

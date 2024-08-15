@@ -11,10 +11,11 @@
 
 {% block content %}
 <main>
+    <!-- avatar scheme -->
     {% for nivel, functionaries in functionaries.items %}
     <div class="cabinet-row">
         {% for functionary in functionaries %}
-        <div class="avatar-box" data-bs-toggle="modal" data-bs-target="#myModal"
+        <div class="avatar-box" data-bs-toggle="modal" data-bs-target="#functionary-modal"
             data-url="{{ request.build_absolute_uri }}/{{ functionary.id }}"
         >
             <img class="avatar-img" src="{{functionary.image.url}}" alt="...">
@@ -25,14 +26,15 @@
     </div>
     {% endfor %}
 
-    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true"
+    <!-- modal with details of the functionary -->
+    <div class="modal fade" id="functionary-modal" tabindex="-1" aria-labelledby="functionaryModalLabel" aria-hidden="true"
         data-bs-dismiss="modal">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body text-center my-5"></div>
+                <div class="modal-body d-flex flex-column"></div>
             </div>
         </div>
     </div>

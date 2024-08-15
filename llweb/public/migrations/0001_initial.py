@@ -34,7 +34,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('biography', models.CharField(max_length=4096, verbose_name='Biografia')),
                 ('image', models.ImageField(upload_to='functionaries/profile', verbose_name='Foto Perfil')),
-                ('functionary', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='functionary', to='public.functionary')),
+                ('functionary', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='profile', to='public.functionary')),
             ],
             options={
                 'verbose_name': 'Funcionario Publico - Perfil',

@@ -14,8 +14,8 @@ async function fetchData(url) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    const modal = document.getElementById('myModal');
-    const modalBody = document.querySelector('#myModal .modal-body');
+    const modal = document.getElementById('functionary-modal');
+    const modalBody = document.querySelector('#functionary-modal .modal-body');
 
     const modalXxx = `
         <div class="spinner-border" role="status">

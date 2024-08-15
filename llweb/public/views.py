@@ -1,8 +1,5 @@
 from collections import defaultdict
 
-from django.contrib import messages
-
-from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 from django.views.generic import ListView
 from django.views.generic import DetailView
@@ -21,31 +18,23 @@ class Cabinet(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
-        functionaries = context['functionaries']
-        dic_for_height = defaultdict(list)
-
-        for functionary in functionaries:
-            dic_for_height[functionary.height].append(functionary)
-
-        context['functionaries'] = dict(dic_for_height)
+        context['functionaries'] = self.list_to_dict(context['functionaries'])
 
         return context
 
+    def list_to_dict(self, functionaries_list):
+        dic_for_height = defaultdict(list)
 
-class Official(DetailView):
+        for functionary in functionaries_list:
+            dic_for_height[functionary.height].append(functionary)
+
+        return dict(dic_for_height)
+
+
+class FunctionaryDetail(DetailView):
     model = Functionary
-
-    def render_to_response(self, context, **response_kwargs):
-        object_ = context['object']
-
-        html_content = [line.strip() for line in f"""
-            <p>{object_.name}</p>
-            <p>{object_.position}</p>
-            <p>{object_.image}</p>
-        """]
-
-        return HttpResponse(html_content, content_type='text/html')
+    template_name = 'functionary-detail.html'
+    context_object_name = 'functionary'
 
 
 class Join(TemplateView):

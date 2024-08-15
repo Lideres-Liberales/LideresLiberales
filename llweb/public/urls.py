@@ -14,7 +14,7 @@ urlpatterns = [
     ),
     path(
         route='gabinete/<int:pk>',
-        view=Official.as_view(),
+        view=FunctionaryDetail.as_view(),
         name='public_official'
     ),
     path(

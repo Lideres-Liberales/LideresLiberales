@@ -80,7 +80,7 @@ class FunctionaryPerfil(models.Model):
     )
 
     functionary = models.OneToOneField(
-        related_name='functionary',
+        related_name='profile',
         to=Functionary,
         on_delete=models.CASCADE
     )
