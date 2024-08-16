@@ -1,7 +1,9 @@
 from django.contrib import admin
 from django import forms
 
-from .models import Functionary, FunctionaryPerfil
+from .models import Functionary
+from .models import FunctionaryPerfil
+from .models import PoliticalParty
 
 
 class ProfileInline(admin.StackedInline):
@@ -11,6 +13,7 @@ class ProfileInline(admin.StackedInline):
 @admin.register(Functionary)
 class FunctionaryAdmin(admin.ModelAdmin):
     inlines = [ProfileInline]
+    ordering = ['id']
     list_display = ('name', 'position', 'manager_display')
 
     # san chatgpt me dice que no hay forma automagica. mendigo santo.
@@ -34,3 +37,9 @@ class FunctionaryAdmin(admin.ModelAdmin):
         return obj.manager.name if obj.manager else ''
 
     manager_display.short_description = 'Superior'
+
+
+@admin.register(PoliticalParty)
+class PoliticalPartyAdmin(admin.ModelAdmin):
+    ordering = ['id']
+    list_display = ('denomination', )

@@ -33,9 +33,12 @@ class PoliticalParty(models.Model):
     )
 
     color = models.CharField(
-        verbose_name='Color',
+        verbose_name='Color (en hexadecimal)',
         max_length=9
     )
+
+    def __str__(self):
+        return self.denomination
 
 
 class Functionary(models.Model, ImageDeletionMixin):
@@ -88,6 +91,9 @@ class Functionary(models.Model, ImageDeletionMixin):
 
         super(Functionary, self).save(*args, **kwargs)
 
+    def __str__(self):
+        return self.name
+
 
 class FunctionaryPerfil(models.Model, ImageDeletionMixin):
     class Meta:
@@ -95,9 +101,10 @@ class FunctionaryPerfil(models.Model, ImageDeletionMixin):
         verbose_name_plural = 'Funcionarios Publicos - Perfiles'
         db_table = 'public_functionary_profiles'
 
-    biography = models.CharField(
+    biography = models.TextField(
         verbose_name='Biografia',
-        max_length=4096
+        blank=True,
+        null=True
     )
 
     image = models.ImageField(
