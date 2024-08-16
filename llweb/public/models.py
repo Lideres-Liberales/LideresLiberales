@@ -1,6 +1,24 @@
 from django.db import models
+
+from django.core.files.storage import default_storage
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator
+
+
+class ImageDeletionMixin:
+    def delete_old_image(self, image_field_name):
+        try:
+            if self.pk:
+                old_instance = self.__class__.objects.get(pk=self.pk)
+                old_image = getattr(old_instance, image_field_name, None)
+                new_image = getattr(self, image_field_name, None)
+
+                if old_image != new_image:
+                    if old_image and default_storage.exists(old_image.name):
+                        default_storage.delete(old_image.name)
+
+        except ValueError:
+            raise ValueError('Houston, we have a problem')
 
 
 class PoliticalParty(models.Model):
@@ -20,7 +38,7 @@ class PoliticalParty(models.Model):
     )
 
 
-class Functionary(models.Model):
+class Functionary(models.Model, ImageDeletionMixin):
     class Meta:
         verbose_name = 'Funcionario Publico'
         verbose_name_plural = 'Funcionarios Publicos'
@@ -62,34 +80,16 @@ class Functionary(models.Model):
         related_name='political_party',
     )
 
-    def clean_manager(self):
-        if self.manager:
-            ancestor = self.manager
-            while ancestor:
-                if ancestor == self:
-                    raise ValidationError('A node cannot be its own descendant.')
-                ancestor = ancestor.manager
-
     def save(self, *args, **kwargs):
-        self.clean()
+        self.delete_old_image('image')
 
-        try:
-            if self.manager:
-                self.height = self.manager.height + 1
-
-            functionary_query = Functionary.objects.filter(id=self.id)
-
-            if functionary_query.exists():
-                if functionary_query[0].image != self.image:
-                    functionary_query[0].image.delete(save=False)
-
-        except ValueError:
-            raise ValueError('Houston, we have a problem')
+        if self.manager:
+            self.height = self.manager.height + 1
 
         super(Functionary, self).save(*args, **kwargs)
 
 
-class FunctionaryPerfil(models.Model):
+class FunctionaryPerfil(models.Model, ImageDeletionMixin):
     class Meta:
         verbose_name = 'Funcionario Publico - Perfil'
         verbose_name_plural = 'Funcionarios Publicos - Perfiles'
@@ -108,5 +108,9 @@ class FunctionaryPerfil(models.Model):
     functionary = models.OneToOneField(
         related_name='profile',
         to=Functionary,
-        on_delete=models.PROTECT
+        on_delete=models.CASCADE
     )
+
+    def save(self, *args, **kwargs):
+        self.delete_old_image('image')
+        super(FunctionaryPerfil, self).save(*args, **kwargs)
