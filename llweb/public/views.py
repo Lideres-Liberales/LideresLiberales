@@ -33,7 +33,7 @@ class Cabinet(ListView):
         return dict(dic_for_height)
 
     def get_references(self):
-        return PoliticalParty.objects.all()
+        return PoliticalParty.objects.filter(political_party__isnull=False).distinct()
 
 
 class FunctionaryDetail(DetailView):
