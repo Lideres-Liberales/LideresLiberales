@@ -43,9 +43,7 @@ class PoliticalParty(models.Model):
 
 class Functionary(models.Model, ImageDeletionMixin):
     class Meta:
-        verbose_name = 'Funcionario Publico'
-        verbose_name_plural = 'Funcionarios Publicos'
-        db_table = 'public_functionaries'
+        abstract = True
 
     name = models.CharField(
         verbose_name='Nombre',
@@ -57,16 +55,42 @@ class Functionary(models.Model, ImageDeletionMixin):
         max_length=100
     )
 
-    image = models.ImageField(
-        verbose_name='Avatar',
+    avatar_image = models.ImageField(
+        verbose_name='Foto Avatar',
         upload_to='functionaries/avatar'
     )
 
-    height = models.IntegerField(
-        verbose_name='Nivel',
-        validators=[MinValueValidator(0)],
-        default=0
+    perfil_image = models.ImageField(
+        verbose_name='Foto Perfil',
+        upload_to='functionaries/profile'
     )
+
+    biography = models.TextField(
+        verbose_name='Biografia',
+        blank=True,
+        null=True
+    )
+
+    political_party = models.ForeignKey(
+        verbose_name='Partido Politico',
+        to=PoliticalParty,
+        on_delete=models.PROTECT,
+        related_name='%(class)s_political_party'
+    )
+
+    def save(self, *args, **kwargs):
+        self.delete_old_image('image')
+        super(Functionary, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+
+class ExecutiveBranch(Functionary):
+    class Meta:
+        verbose_name = 'Miembro poder ejecutivo'
+        verbose_name_plural = 'Miembros poder ejecutivo'
+        db_table = 'public_executive_branch'
 
     manager = models.ForeignKey('self',
         verbose_name='Superior',
@@ -76,11 +100,10 @@ class Functionary(models.Model, ImageDeletionMixin):
         related_name='team_members'
     )
 
-    political_party = models.ForeignKey(
-        verbose_name='Partido Politico',
-        on_delete=models.PROTECT,
-        to=PoliticalParty,
-        related_name='political_party',
+    height = models.IntegerField(
+        verbose_name='Nivel',
+        validators=[MinValueValidator(0)],
+        default=0
     )
 
     def save(self, *args, **kwargs):
@@ -91,33 +114,30 @@ class Functionary(models.Model, ImageDeletionMixin):
 
         super(Functionary, self).save(*args, **kwargs)
 
-    def __str__(self):
-        return self.name
 
-
-class FunctionaryPerfil(models.Model, ImageDeletionMixin):
+class Senator(Functionary):
     class Meta:
-        verbose_name = 'Funcionario Publico - Perfil'
-        verbose_name_plural = 'Funcionarios Publicos - Perfiles'
-        db_table = 'public_functionary_profiles'
+        verbose_name = 'Senador'
+        verbose_name_plural = 'Senadores'
+        db_table = 'public_senator'
 
-    biography = models.TextField(
-        verbose_name='Biografia',
-        blank=True,
-        null=True
-    )
 
-    image = models.ImageField(
-        verbose_name='Foto Perfil',
-        upload_to='functionaries/profile'
-    )
+class Deputie(Functionary):
+    class Meta:
+        verbose_name = 'Diputado'
+        verbose_name_plural = 'Diputados'
+        db_table = 'public_deputie'
 
-    functionary = models.OneToOneField(
-        related_name='profile',
-        to=Functionary,
-        on_delete=models.CASCADE
-    )
 
-    def save(self, *args, **kwargs):
-        self.delete_old_image('image')
-        super(FunctionaryPerfil, self).save(*args, **kwargs)
+class CommunityBoard(Functionary):
+    class Meta:
+        verbose_name = 'Miembro junta comunal'
+        verbose_name_plural = 'Miembros junta comunal'
+        db_table = 'public_community_board'
+
+
+class Councillor(Functionary):
+    class Meta:
+        verbose_name = 'Consejal'
+        verbose_name_plural = 'Consejales'
+        db_table = 'public_councillor'

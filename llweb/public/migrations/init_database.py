@@ -70,156 +70,13 @@ def set_up(apps, scheme_editor):
     functionaries = []
 
     functionaries.append(
-        Functionary.objects.create(
+        ExecutiveBranch.objects.create(
             name = 'Javier Milei',
             position = 'Presidente de la Nacion',
-            image = 'functionaries/avatar/milei.png',
+            avatar_image = 'functionaries/avatar/milei.png',
+            perfil_image = 'functionaries/profile/milei.jpeg',
             height = 0,
-            political_party = parties[1]
-        )
-    )
-
-    functionaries.append(
-        Functionary.objects.create(
-            name = 'Victoria Villaruel',
-            position = 'Vicepresidencia de la Nación',
-            image = 'functionaries/avatar/villaruel.png',
-            height = 0,
-            political_party = parties[1]
-        )
-    )
-
-    functionaries.append(
-        Functionary.objects.create(
-            name = 'Karina Milei',
-            position = 'Secretaria gral de presidencia',
-            image = 'functionaries/avatar/karina.png',
-            height = 1,
-            manager = functionaries[0],
-            political_party = parties[1]
-        )
-    )
-
-    functionaries.append(
-        Functionary.objects.create(
-            name = 'Guillermo Francos',
-            position = 'Jefe de Gabinete',
-            image = 'functionaries/avatar/francos.png',
-            height = 1,
-            manager = functionaries[0],
-            political_party = parties[1]
-        )
-    )
-
-    functionaries.append(
-        Functionary.objects.create(
-            name = 'Manuel Adorni',
-            position = 'Vocero',
-            image = 'functionaries/avatar/adorni.png',
-            height = 1,
-            manager = functionaries[0],
-            political_party = parties[1]
-        )
-    )
-
-    functionaries.append(
-        Functionary.objects.create(
-            name = 'Sandra Pettovello',
-            position = 'Ministerio de Capital Humano',
-            image = 'functionaries/avatar/pettovello.png',
-            height = 2,
-            manager = functionaries[3],
-            political_party = parties[1]
-        )
-    )
-
-    functionaries.append(
-        Functionary.objects.create(
-            name = 'Luis Petri',
-            position = 'Ministerio de Defensa',
-            image = 'functionaries/avatar/petri.png',
-            height = 2,
-            manager = functionaries[3],
-            political_party = parties[3]
-        )
-    )
-
-    functionaries.append(
-        Functionary.objects.create(
-            name = 'Federico Sturzenegger',
-            position = 'Ministro de Desregulación',
-            image = 'functionaries/avatar/sturzenegger.png',
-            height = 2,
-            manager = functionaries[3],
-            political_party = parties[1]
-        )
-    )
-
-    functionaries.append(
-        Functionary.objects.create(
-            name = 'Luis Caputo',
-            position = 'Ministerio de Economía',
-            image = 'functionaries/avatar/caputo.png',
-            height = 2,
-            manager = functionaries[3],
-            political_party = parties[2]
-        )
-    )
-
-    functionaries.append(
-        Functionary.objects.create(
-            name = 'Mariano Cúneo Libarona',
-            position = 'Ministerio de Justicia',
-            image = 'functionaries/avatar/cuneo_libarona.png',
-            height = 2,
-            manager = functionaries[3],
-            political_party = parties[1]
-        )
-    )
-
-    functionaries.append(
-        Functionary.objects.create(
-            name = 'Diana Mondino',
-            position = 'Ministerio de Relaciones Exteriores',
-            image = 'functionaries/avatar/mondino.png',
-            height = 2,
-            manager = functionaries[3],
-            political_party = parties[1]
-        )
-    )
-
-    functionaries.append(
-        Functionary.objects.create(
-            name = 'Mario Russo',
-            position = 'Ministerio de Salud',
-            image = 'functionaries/avatar/russo.png',
-            height = 2,
-            manager = functionaries[3],
-            political_party = parties[1]
-        )
-    )
-
-    functionaries.append(
-        Functionary.objects.create(
-            name = 'Patricia Bullrich',
-            position = 'Ministerio de Seguridad',
-            image = 'functionaries/avatar/bulrich.png',
-            height = 2,
-            manager = functionaries[3],
-            political_party = parties[2]
-        )
-    )
-
-    for functionary in functionaries:
-        functionary.save()
-
-    # # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    # # % Functionaries - Profiles                                              %
-    # # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    profiles = []
-
-    profiles.append(
-        FunctionaryPerfil.objects.create(
+            political_party = parties[1],
             biography = clear_text("""
                 Nació el 22 de Octubre de 1970 en CABA. Economista, político y 
                 docente Argentino. Liberal Libertario Anarco-Capitalista. 
@@ -241,14 +98,18 @@ def set_up(apps, scheme_editor):
                 críticas a la clase política tradicional. Logró un notable 
                 apoyo popular, especialmente entre los sectores más jóvenes 
                 y desencantados con el sistema político argentino.
-            """),
-            image = 'functionaries/profile/milei.jpeg',
-            functionary = functionaries[0]
+            """)
         )
     )
 
-    profiles.append(
-        FunctionaryPerfil.objects.create(
+    functionaries.append(
+        ExecutiveBranch.objects.create(
+            name = 'Victoria Villaruel',
+            position = 'Vicepresidencia de la Nación',
+            avatar_image = 'functionaries/avatar/villaruel.png',
+            perfil_image = 'functionaries/profile/villaruel.jpeg',
+            height = 0,
+            political_party = parties[1],
             biography = clear_text("""
                 Nació el 13 de abril de 1975 en Buenos Aires. Abogada, 
                 activista y política argentina. Ha dedicado gran parte de su 
@@ -259,34 +120,49 @@ def set_up(apps, scheme_editor):
                 Argentina desde diciembre del 2023 destacándose por su firme 
                 ideología. Su vida y obra reflejan un profundo compromiso con 
                 los valores que defiende.
-            """),
-            image = 'functionaries/profile/villarruel.jpeg',
-            functionary = functionaries[1]
+            """)
         )
     )
 
-    profiles.append(
-        FunctionaryPerfil.objects.create(
+    functionaries.append(
+        ExecutiveBranch.objects.create(
+            name = 'Karina Milei',
+            position = 'Secretaria gral de presidencia',
+            avatar_image = 'functionaries/avatar/karina.png',
+            perfil_image = 'functionaries/profile/karina.jpeg',
+            height = 1,
+            manager = functionaries[0],
+            political_party = parties[1],
             biography = clear_text("""
                 En construccion
-            """),
-            image = 'functionaries/profile/karina.jpeg',
-            functionary = functionaries[2]
+            """)
         )
     )
 
-    profiles.append(
-        FunctionaryPerfil.objects.create(
+    functionaries.append(
+        ExecutiveBranch.objects.create(
+            name = 'Guillermo Francos',
+            position = 'Jefe de Gabinete',
+            avatar_image = 'functionaries/avatar/francos.png',
+            perfil_image = 'functionaries/profile/francos.jpeg',
+            height = 1,
+            manager = functionaries[0],
+            political_party = parties[1],
             biography = clear_text("""
                 En construccion
-            """),
-            image = 'functionaries/profile/francos.jpeg',
-            functionary = functionaries[3]
+            """)
         )
     )
 
-    profiles.append(
-        FunctionaryPerfil.objects.create(
+    functionaries.append(
+        ExecutiveBranch.objects.create(
+            name = 'Manuel Adorni',
+            position = 'Vocero',
+            avatar_image = 'functionaries/avatar/adorni.png',
+            perfil_image = 'functionaries/profile/adorni.jpeg',
+            height = 1,
+            manager = functionaries[0],
+            political_party = parties[1],
             biography = clear_text("""
                 Nació el 28 de Febrero de 1980 en La Plata. Analista 
                 económico, consultor empresarial y docente seleccionado por 
@@ -295,14 +171,19 @@ def set_up(apps, scheme_editor):
                 comunicar y representar al gobierno en una variedad de asuntos 
                 y eventos oficiales, demostrando su capacidad para transmitir 
                 de manera efectiva los mensajes y las políticas del gobierno.
-            """),
-            image = 'functionaries/profile/adorni.jpeg',
-            functionary = functionaries[4]
+            """)
         )
     )
 
-    profiles.append(
-        FunctionaryPerfil.objects.create(
+    functionaries.append(
+        ExecutiveBranch.objects.create(
+            name = 'Sandra Pettovello',
+            position = 'Ministerio de Capital Humano',
+            avatar_image = 'functionaries/avatar/pettovello.png',
+            perfil_image = 'functionaries/profile/pettovello.jpeg',
+            height = 2,
+            manager = functionaries[3],
+            political_party = parties[1],
             biography = clear_text("""
                 Periodista y política argentina nacida el 6 de abril de 1968 
                 en Buenos Aires. Actualmente, ocupa el cargo de ministra de 
@@ -316,34 +197,49 @@ def set_up(apps, scheme_editor):
                 de aceptar la propuesta de Milei para liderar el nuevo 
                 ministerio que fusiona áreas como Educación, Trabajo, 
                 Desarrollo Social y Salud.
-            """),
-            image = 'functionaries/profile/pettovello.jpeg',
-            functionary = functionaries[5]
+            """)
         )
     )
 
-    profiles.append(
-        FunctionaryPerfil.objects.create(
+    functionaries.append(
+        ExecutiveBranch.objects.create(
+            name = 'Luis Petri',
+            position = 'Ministerio de Defensa',
+            avatar_image = 'functionaries/avatar/petri.png',
+            perfil_image = 'functionaries/profile/petri.jpeg',
+            height = 2,
+            manager = functionaries[3],
+            political_party = parties[3],
             biography = clear_text("""
                 En construccion
-            """),
-            image = 'functionaries/profile/petri.jpeg',
-            functionary = functionaries[6]
+            """)
         )
     )
 
-    profiles.append(
-        FunctionaryPerfil.objects.create(
+    functionaries.append(
+        ExecutiveBranch.objects.create(
+            name = 'Federico Sturzenegger',
+            position = 'Ministro de Desregulación',
+            avatar_image = 'functionaries/avatar/sturzenegger.png',
+            perfil_image = 'functionaries/profile/sturzenegger.jpeg',
+            height = 2,
+            manager = functionaries[3],
+            political_party = parties[1],
             biography = clear_text("""
                 En construccion
-            """),
-            image = 'functionaries/profile/sturzenegger.jpeg',
-            functionary = functionaries[7]
+            """)
         )
     )
 
-    profiles.append(
-        FunctionaryPerfil.objects.create(
+    functionaries.append(
+        ExecutiveBranch.objects.create(
+            name = 'Luis Caputo',
+            position = 'Ministerio de Economía',
+            avatar_image = 'functionaries/avatar/caputo.png',
+            perfil_image = 'functionaries/profile/caputo.jpeg',
+            height = 2,
+            manager = functionaries[3],
+            political_party = parties[2],
             biography = clear_text("""
                 Conocido como “Toto”, es un economista argentino nacido el 21 
                 de abril de 1965 en Buenos Aires. Actualmente, ocupa el cargo 
@@ -353,24 +249,34 @@ def set_up(apps, scheme_editor):
                 destacados en instituciones financieras y gubernamentales, es 
                 una figura influyente en la economía argentina, con una 
                 trayectoria sólida.
-            """),
-            image = 'functionaries/profile/caputo.jpeg',
-            functionary = functionaries[8]
+            """)
         )
     )
 
-    profiles.append(
-        FunctionaryPerfil.objects.create(
+    functionaries.append(
+        ExecutiveBranch.objects.create(
+            name = 'Mariano Cúneo Libarona',
+            position = 'Ministerio de Justicia',
+            avatar_image = 'functionaries/avatar/cuneo_libarona.png',
+            perfil_image = 'functionaries/profile/cuneo_libarona.jpeg',
+            height = 2,
+            manager = functionaries[3],
+            political_party = parties[1],
             biography = clear_text("""
                 En construccion
-            """),
-            image = 'functionaries/profile/cuneo_libarona.jpeg',
-            functionary = functionaries[9]
+            """)
         )
     )
 
-    profiles.append(
-        FunctionaryPerfil.objects.create(
+    functionaries.append(
+        ExecutiveBranch.objects.create(
+            name = 'Diana Mondino',
+            position = 'Ministerio de Relaciones Exteriores',
+            avatar_image = 'functionaries/avatar/mondino.png',
+            perfil_image = 'functionaries/profile/mondino.jpeg',
+            height = 2,
+            manager = functionaries[3],
+            political_party = parties[1],
             biography = clear_text("""
                 Nació el 8 de Agosto de 1958 en Córdoba Septiembre de 1977 en 
                 Corrientes. Estudió economía en la Universidad de Córdoba e 
@@ -382,34 +288,42 @@ def set_up(apps, scheme_editor):
                 Internacional y Culto que asumió el 10 de diciembre del 2023. 
                 Diana sabe hablar perfectamente en Inglés, Portugués y sabe un 
                 poco de Francés.
-            """),
-            image = 'functionaries/profile/mondino.jpeg',
-            functionary = functionaries[10]
+            """)
         )
     )
 
-    profiles.append(
-        FunctionaryPerfil.objects.create(
+    functionaries.append(
+        ExecutiveBranch.objects.create(
+            name = 'Mario Russo',
+            position = 'Ministerio de Salud',
+            avatar_image = 'functionaries/avatar/russo.png',
+            perfil_image = 'functionaries/profile/russo.jpeg',
+            height = 2,
+            manager = functionaries[3],
+            political_party = parties[1],
             biography = clear_text("""
                 En construccion
-            """),
-            image = 'functionaries/profile/russo.jpeg',
-            functionary = functionaries[11]
+            """)
         )
     )
 
-    profiles.append(
-        FunctionaryPerfil.objects.create(
+    functionaries.append(
+        ExecutiveBranch.objects.create(
+            name = 'Patricia Bullrich',
+            position = 'Ministerio de Seguridad',
+            avatar_image = 'functionaries/avatar/bulrich.png',
+            perfil_image = 'functionaries/profile/bullrich.jpeg',
+            height = 2,
+            manager = functionaries[3],
+            political_party = parties[2],
             biography = clear_text("""
                 En construccion
-            """),
-            image = 'functionaries/profile/bullrich.jpeg',
-            functionary = functionaries[12]
+            """)
         )
     )
 
-    for profile in profiles:
-        profile.save()
+    for functionary in functionaries:
+        functionary.save()
 
     # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     # % Root                                                                  %

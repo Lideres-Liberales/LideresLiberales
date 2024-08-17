@@ -1,20 +1,18 @@
 from django.contrib import admin
 from django import forms
 
-from .models import Functionary
-from .models import FunctionaryPerfil
 from .models import PoliticalParty
+from .models import ExecutiveBranch
+from .models import Senator
+from .models import Deputie
+from .models import CommunityBoard
+from .models import Councillor
 
 
-class ProfileInline(admin.StackedInline):
-    model = FunctionaryPerfil
-
-
-@admin.register(Functionary)
-class FunctionaryAdmin(admin.ModelAdmin):
-    inlines = [ProfileInline]
+@admin.register(ExecutiveBranch)
+class ExecutiveBranchAdmin(admin.ModelAdmin):
+    list_display = ('name', 'position', 'manager_display', )
     ordering = ['id']
-    list_display = ('name', 'position', 'manager_display')
 
     # san chatgpt me dice que no hay forma automagica. mendigo santo.
     def formfield_for_dbfield(self, db_field, request, **kwargs):
@@ -26,17 +24,16 @@ class FunctionaryAdmin(admin.ModelAdmin):
 
         return super().formfield_for_dbfield(db_field, request, **kwargs)
 
-    # para customizar luego
-    def formfield_for_foreignkey(self, db_field, request, **kwargs):
-        if db_field.name == 'manager':
-            kwargs['widget'] = forms.Select()
-
-        return super().formfield_for_foreignkey(db_field, request, **kwargs)
-
     def manager_display(self, obj):
         return obj.manager.name if obj.manager else ''
 
     manager_display.short_description = 'Superior'
+
+
+@admin.register(Senator, Deputie, CommunityBoard, Councillor)
+class FunctionaryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'position', )
+    ordering = ['id']
 
 
 @admin.register(PoliticalParty)

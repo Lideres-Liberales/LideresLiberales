@@ -18,7 +18,7 @@
         <div class="avatar-box" data-bs-toggle="modal" data-bs-target="#functionary-modal"
             data-url="{{ request.build_absolute_uri }}/{{ functionary.id }}"
         >
-            <img class="avatar-img" src="{{ functionary.image.url }}" alt="..."
+            <img class="avatar-img" src="{{ functionary.avatar_image.url }}" alt="..."
                 data-border-color="{{ functionary.political_party.color }}"
             >
             <div class="avatar-name">{{ functionary.name }}</div>
