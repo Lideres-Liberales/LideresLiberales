@@ -1,3 +1,4 @@
+from abc import ABC
 from collections import defaultdict
 
 from django.views.generic.base import TemplateView
@@ -16,80 +17,81 @@ class Home(TemplateView):
     template_name = 'home.html'
 
 
-class FunctionaryMixin:
+# -----------------------------------------------------------------------------
+class FunctionaryView(ListView, ABC):
     template_name = 'functionary.html'
     context_object_name = 'functionaries'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['politicalsParties'] = self.get_references(context['functionaries'])
+        functionaries = context['functionaries']
+
+        context['functionaries'] = self.list_to_dict(functionaries)
+        context['politicalsParties'] = self.get_references(functionaries)
 
         return context
 
     def get_queryset(self):
         return self.model.objects.select_related('political_party').all()
 
+    def list_to_dict(self, functionaries):
+        return {'0': functionaries}
+
     def get_references(self, functionaries):
         return {functionary.political_party for functionary in functionaries}
 
 
-class CabinetView(FunctionaryMixin, ListView):
+class CabinetView(FunctionaryView):
     model = ExecutiveBranch
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['functionaries'] = self.list_to_dict(context['functionaries'])
-
-        return context
-
-    def list_to_dict(self, functionaries_list):
+    def list_to_dict(self, functionaries):
         dic_for_height = defaultdict(list)
 
-        for functionary in functionaries_list:
+        for functionary in functionaries:
             dic_for_height[functionary.height].append(functionary)
 
         return dict(dic_for_height)
 
 
-class SenatorView(FunctionaryMixin, ListView):
+class SenatorView(FunctionaryView):
     model = Senator
 
 
-class DeputieView(FunctionaryMixin, ListView):
+class DeputieView(FunctionaryView):
     model = Deputie
 
 
-class CommunityBoardView(FunctionaryMixin, ListView):
+class CommunityBoardView(FunctionaryView):
     model = CommunityBoard
 
 
-class CouncillorView(FunctionaryMixin, ListView):
+class CouncillorView(FunctionaryView):
     model = Councillor
 
 
 # -----------------------------------------------------------------------------
-class FunctionaryDetailMixin:
+class FunctionaryDetailView(DetailView, ABC):
     template_name = 'functionary-detail.html'
     context_object_name = 'functionary'
 
 
-class CabinetDetailView(FunctionaryDetailMixin, DetailView):
+class CabinetDetailView(FunctionaryDetailView):
     model = ExecutiveBranch
 
 
-class SenatorDetailView(FunctionaryDetailMixin, DetailView):
+class SenatorDetailView(FunctionaryDetailView):
     model = Senator
 
 
-class DeputieDetailView(FunctionaryDetailMixin, DetailView):
+class DeputieDetailView(FunctionaryDetailView):
     model = Deputie
 
 
-class CommunityBoardDetailView(FunctionaryDetailMixin, DetailView):
+class CommunityBoardDetailView(FunctionaryDetailView):
     model = CommunityBoard
 
 
-class CouncillorDetailView(FunctionaryDetailMixin, DetailView):
+class CouncillorDetailView(FunctionaryDetailView):
     model = Councillor
 
 

@@ -20,7 +20,7 @@ urlpatterns = [
         name='cabinet_details'
     ),
 
-    # Senator ----------------------------------------------------------------
+    # Senator -----------------------------------------------------------------
     path(
         route='senadores',
         view=SenatorView.as_view(),
@@ -32,7 +32,7 @@ urlpatterns = [
         name='senator_details'
     ),
 
-    # Deputie ----------------------------------------------------------------
+    # Deputie -----------------------------------------------------------------
     path(
         route='diputados',
         view=DeputieView.as_view(),
@@ -44,7 +44,7 @@ urlpatterns = [
         name='deputie_details'
     ),
 
-    # CommunityBoard ----------------------------------------------------------------
+    # CommunityBoard ----------------------------------------------------------
     path(
         route='junta-comunal',
         view=CommunityBoardView.as_view(),
@@ -56,7 +56,7 @@ urlpatterns = [
         name='community_board_details'
     ),
 
-    # Councillor ----------------------------------------------------------------
+    # Councillor --------------------------------------------------------------
     path(
         route='consejales',
         view=CouncillorView.as_view(),
