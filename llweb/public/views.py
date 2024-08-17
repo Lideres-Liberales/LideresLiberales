@@ -23,13 +23,10 @@ class FunctionaryMixin:
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['politicalsParties'] = self.get_references(context['functionaries'])
-        print(context['politicalsParties'])
 
         return context
 
     def get_queryset(self):
-        # Se usa select_related para evitar el problema de N+1 consultas con la
-        # relación ForeignKey
         return self.model.objects.select_related('political_party').all()
 
     def get_references(self, functionaries):
