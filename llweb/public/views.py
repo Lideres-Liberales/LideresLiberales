@@ -22,17 +22,18 @@ class FunctionaryMixin:
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['politicalsParties'] = self.get_references()
+        context['politicalsParties'] = self.get_references(context['functionaries'])
+        print(context['politicalsParties'])
 
         return context
 
-    def get_references(self):
-        return PoliticalParty.objects.filter(**{
-            self.get_related_name_party() + '__isnull': False
-        }).distinct()
+    def get_queryset(self):
+        # Se usa select_related para evitar el problema de N+1 consultas con la
+        # relación ForeignKey
+        return self.model.objects.select_related('political_party').all()
 
-    def get_related_name_party(self):
-        return self.model.__name__.lower() + '_political_party'
+    def get_references(self, functionaries):
+        return {functionary.political_party for functionary in functionaries}
 
 
 class CabinetView(FunctionaryMixin, ListView):

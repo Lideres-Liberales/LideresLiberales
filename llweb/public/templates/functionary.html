@@ -30,7 +30,7 @@
 
     <!-- political party rferences -->
     <div class="color-list">
-        {% for politicalParty in politicalsParties.all %}
+        {% for politicalParty in politicalsParties %}
             <div class="color-item">
                 <span class="color-box" data-box-color="{{politicalParty.color}}"></span>
                 {{ politicalParty.denomination }}
