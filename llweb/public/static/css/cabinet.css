@@ -7,6 +7,12 @@ main {
     background-color: #ffffff80;
 }
 
+.modal-imagen {
+    width: 385px;
+    height: 498px;
+    object-fit: cover;
+}
+
 .text-justify {
     text-align: justify;
 }

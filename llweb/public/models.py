@@ -1,4 +1,5 @@
-from django.db import models
+from django.db import models, transaction
+from django.db.utils import IntegrityError
 
 from django.core.files.storage import default_storage
 from django.core.exceptions import ValidationError
@@ -128,6 +129,31 @@ class Deputie(Functionary):
         verbose_name_plural = 'Diputados'
         db_table = 'public_deputie'
 
+    is_president = models.BooleanField(
+        verbose_name='Presidente de camara',
+        default=False
+    )
+
+    def set_president(self):
+        if self.is_president:
+            previous_president = Deputie.objects.filter(is_president=True).exclude(id=self.id).first()
+
+            if previous_president:
+                previous_president.is_president = False
+                previous_president.save()
+
+        elif not Deputie.objects.filter(is_president=True).exists():
+            self.is_president = True
+
+    def save(self, *args, **kwargs):
+        try:
+            with transaction.atomic():
+                self.set_president()
+                super().save(*args, **kwargs)
+
+        except IntegrityError as e:
+            print(f"Error al guardar el diputado: {e}")
+
 
 class CommunityBoard(Functionary):
     class Meta:
@@ -135,9 +161,19 @@ class CommunityBoard(Functionary):
         verbose_name_plural = 'Miembros junta comunal'
         db_table = 'public_community_board'
 
+    commune = models.CharField(
+        verbose_name='Comuna',
+        max_length=100
+    )
+
 
 class Councillor(Functionary):
     class Meta:
         verbose_name = 'Consejal'
         verbose_name_plural = 'Consejales'
         db_table = 'public_councillor'
+
+    municipality = models.CharField(
+        verbose_name='Municipio',
+        max_length=100
+    )

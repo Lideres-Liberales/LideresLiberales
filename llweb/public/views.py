@@ -60,6 +60,14 @@ class SenatorView(FunctionaryView):
 class DeputieView(FunctionaryView):
     model = Deputie
 
+    def list_to_dict(self, functionaries):
+        dic_for_height = defaultdict(list)
+
+        for functionary in functionaries:
+            dic_for_height[functionary.is_president].append(functionary)
+
+        return dict(dic_for_height)
+
 
 class CommunityBoardView(FunctionaryView):
     model = CommunityBoard

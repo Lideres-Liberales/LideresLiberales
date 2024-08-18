@@ -64,11 +64,13 @@ def set_up(apps, scheme_editor):
     for party in parties:
         party.save()
 
-    # # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    # # % Functionaries                                                         %
-    # # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    # % Functionaries                                                         %
+    # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     functionaries = []
 
+    # $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    # $ Executive Branch                                                      $
     functionaries.append(
         ExecutiveBranch.objects.create(
             name = 'Javier Milei',
@@ -316,6 +318,141 @@ def set_up(apps, scheme_editor):
             height = 2,
             manager = functionaries[3],
             political_party = parties[2],
+            biography = clear_text("""
+                En construccion
+            """)
+        )
+    )
+
+    # $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    # $ Deputies                                                              $
+    functionaries.append(
+        Deputie.objects.create(
+            name = 'Martín Menem',
+            position = 'Diputado',
+            is_president = True,
+            avatar_image = 'functionaries/avatar/martin_menem.png',
+            perfil_image = 'functionaries/profile/martin_menem.png',
+            political_party = parties[1],
+            biography = clear_text("""
+                En construccion
+            """)
+        )
+    )
+
+    functionaries.append(
+        Deputie.objects.create(
+            name = 'Alberto Gustavo Arancibia Rodríguez',
+            position = 'Diputado',
+            avatar_image = 'functionaries/avatar/alberto_arancibia_rodríguez.png',
+            perfil_image = 'functionaries/profile/alberto_arancibia_rodríguez.png',
+            political_party = parties[1],
+            biography = clear_text("""
+                En construccion
+            """)
+        )
+    )
+
+    functionaries.append(
+        Deputie.objects.create(
+            name = 'Gabriel Bornoroni',
+            position = 'Diputado',
+            avatar_image = 'functionaries/avatar/gabriel_bornoroni.png',
+            perfil_image = 'functionaries/profile/gabriel_bornoroni.png',
+            political_party = parties[1],
+            biography = clear_text("""
+                En construccion
+            """)
+        )
+    )
+
+    functionaries.append(
+        Deputie.objects.create(
+            name = 'Lisandro Almirón',
+            position = 'Diputado',
+            avatar_image = 'functionaries/avatar/lisandro_almiron.png',
+            perfil_image = 'functionaries/profile/lisandro_almiron.png',
+            political_party = parties[1],
+            biography = clear_text("""
+                En construccion
+            """)
+        )
+    )
+
+    functionaries.append(
+        Deputie.objects.create(
+            name = 'Pablo Ansaloni',
+            position = 'Diputado',
+            avatar_image = 'functionaries/avatar/pablo_ansaloni.png',
+            perfil_image = 'functionaries/profile/pablo_ansaloni.png',
+            political_party = parties[1],
+            biography = clear_text("""
+                En construccion
+            """)
+        )
+    )
+
+    # $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    # $ Senators                                                              $
+    functionaries.append(
+        Senator.objects.create(
+            name = 'Bartolomé Esteban Abdala',
+            position = 'Senador',
+            avatar_image = 'functionaries/avatar/bartolome_esteban_abdala.png',
+            perfil_image = 'functionaries/profile/bartolome_esteban_abdala.jpeg',
+            political_party = parties[1],
+            biography = clear_text("""
+                En construccion
+            """)
+        )
+    )
+
+    functionaries.append(
+        Senator.objects.create(
+            name = 'Bruno Olivera Lucero',
+            position = 'Senador',
+            avatar_image = 'functionaries/avatar/bruno_antonio_olivera_lucero.png',
+            perfil_image = 'functionaries/profile/bruno_antonio_olivera_lucero.jpg',
+            political_party = parties[1],
+            biography = clear_text("""
+                En construccion
+            """)
+        )
+    )
+
+    functionaries.append(
+        Senator.objects.create(
+            name = 'Ezequiel Atauche',
+            position = 'Senador',
+            avatar_image = 'functionaries/avatar/ezequiel_atauche.png',
+            perfil_image = 'functionaries/profile/ezequiel_atauche.jpeg',
+            political_party = parties[1],
+            biography = clear_text("""
+                En construccion
+            """)
+        )
+    )
+
+    functionaries.append(
+        Senator.objects.create(
+            name = 'Francisco Paoltroni',
+            position = 'Senador',
+            avatar_image = 'functionaries/avatar/francisco_manuel_paoltroni.png',
+            perfil_image = 'functionaries/profile/francisco_manuel_paoltroni.jpeg',
+            political_party = parties[1],
+            biography = clear_text("""
+                En construccion
+            """)
+        )
+    )
+
+    functionaries.append(
+        Senator.objects.create(
+            name = 'Ivanna Marcela Arrascaeta',
+            position = 'Senador',
+            avatar_image = 'functionaries/avatar/ivanna_marcela_arrascaeta.png',
+            perfil_image = 'functionaries/profile/ivanna_marcela_arrascaeta.jpg',
+            political_party = parties[1],
             biography = clear_text("""
                 En construccion
             """)
