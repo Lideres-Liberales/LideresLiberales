@@ -1,7 +1,7 @@
 from django.db import models
 
-# Create your models here.
-class Persona(models.Model):
+
+class Accounts(models.Model):
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
     dni = models.CharField(max_length=20, unique=True)
@@ -36,28 +36,27 @@ class Persona(models.Model):
     celular = models.CharField(max_length=15)
     creacion = models.DateTimeField(auto_now_add=True)
     modificacion = models.DateTimeField(auto_now=True)
-    
+
     class Meta:
         abstract = True
 
     def __str__(self):
         return f'{self.nombre} {self.apellido}'
-    
-class Miembro(Persona):
-    
-    class Meta:
-        verbose_name = 'Miembro'
-        verbose_name_plural = 'Miembros'
 
-class Representante(Persona):
-    
-    class Meta:
-        verbose_name = 'Representante'
-        verbose_name_plural = 'Representantes'
 
-class AsociacionCivil(Persona):
-    
+class BoardOfDirectors(Accounts):
     class Meta:
-        verbose_name = 'Asociación Civil'
-        verbose_name_plural = 'Asociaciones Civiles'
-  
+        verbose_name = 'Miembro - Mesa directiva'
+        verbose_name_plural = 'Mesa Directiva'
+
+
+class Member(Accounts):
+    class Meta:
+        verbose_name = 'Mienbro'
+        verbose_name_plural = 'Mienbros'
+
+
+class Editor(Accounts):
+    class Meta:
+        verbose_name = 'Editor'
+        verbose_name_plural = 'Editores'
