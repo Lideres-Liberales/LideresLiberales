@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 
 
-class PublicConfig(AppConfig):
+class UsersConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'public'
-    verbose_name = 'Miembros'
+    name = 'users'
+    verbose_name = 'Usuarios'
