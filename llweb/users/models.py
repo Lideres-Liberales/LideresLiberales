@@ -94,7 +94,7 @@ class AbstractUser(User):
             super(AbstractUser, self).save(*args, **kwargs)
 
             if not self.groups.all():
-                self.groups.add(Group.objects.get(name = self.groups_name()))
+                self.groups.add(Group.objects.get(name=self.groups_name()))
 
     def __str__(self):
         return f'{self.last_name}, {self.first_name}'

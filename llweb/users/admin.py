@@ -4,6 +4,7 @@ from .models import BoardOfDirectors
 from .models import Member
 from .models import Editor
 
+
 @admin.register(BoardOfDirectors)
 class BoardOfDirectorsAdmin(admin.ModelAdmin):
     list_display = ('username', 'first_name', 'last_name', 'province', 'dni', 'movil_phone', 'email')
