@@ -35,7 +35,7 @@ class Provinces(models.TextChoices):
 class Profile(models.Model):
     image = models.ImageField(
         verbose_name='Imagen',
-        upload_to='seguridad',
+        upload_to='security',
         null=True,
         blank=True
     )

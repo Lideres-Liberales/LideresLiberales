@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'root.apps.RootConfig',
     'public.apps.PublicConfig',
     'users.apps.UsersConfig',
+    'press.apps.PressConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',
