@@ -6,8 +6,8 @@ from .models import Comment
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'featured_image', 'body', 'creation', 'modification')
-    search_fields = ('title', 'author', 'featured_image', 'body', 'creation', 'modification')
+    list_display = ('title', 'author', 'featured_image', 'creation', 'modification')
+    search_fields = ('title', 'author', 'featured_image', 'creation', 'modification')
     ordering = ['creation']
 
 
