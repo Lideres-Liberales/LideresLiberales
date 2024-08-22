@@ -1,7 +1,9 @@
-from django.contrib import messages
+from django.views.generic import ListView
+from .models import Article
 
-from django.views.generic.base import TemplateView
 
-
-class News(TemplateView):
-    template_name = 'news.html'
+class ArticleListView(ListView):
+    model = Article
+    template_name = 'article_list.html'
+    context_object_name = 'articles'
+    paginate_by = 10

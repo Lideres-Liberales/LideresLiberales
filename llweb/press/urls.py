@@ -4,7 +4,7 @@ from .views import *
 urlpatterns = [
     path(
         route='prensa',
-        view=News.as_view(),
+        view=ArticleListView.as_view(),
         name='news'
     ),
 ]
