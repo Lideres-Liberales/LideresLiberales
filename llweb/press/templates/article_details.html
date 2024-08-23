@@ -7,14 +7,33 @@
 
 {% block content %}
 <main>
-    <h1>{{ article.title }}</h1>
+    <div class="artlicle-content">
+        <h2 class="artlicle-content-title text-uppercase">{{ article.title }}</h2>
+        <p class="news-info">Por {{ article.author }} / {{ article.creation|date:"j, F, Y" }}</p>
+        <img src="{{ article.featured_image.url }}" alt="Imagen de la noticia">
+        <p class="news-content py-4">{{ article.body }}</p>
+    </div>
 
-    {% if article.prev_article_id %}
-        <a href="{% url 'news-details' pk=article.prev_article_id %}">anterior</a>
-    {% endif %}
+    <div class="artlicle-navigation">
+        {% if article.prev_article_id %}
+            <a href="{% url 'news-details' pk=article.prev_article_id %}">
+                <i class="fa-2x fa-regular fa-circle-left"></i>
+            </a>
+        {% else %}
+            <i class="fa-2x fa-regular fa-circle-left disabled-link"></i>
+        {% endif %}
 
-    {% if article.next_article_id %}
-        <a href="{% url 'news-details' pk=article.next_article_id %}">siguiente</a>
-    {% endif %}
+        {% if article.next_article_id %}
+            <a href="{% url 'news-details' pk=article.next_article_id %}">
+                <i class="fa-2x fa-regular fa-circle-right"></i>
+            </a>
+        {% else %}
+            <i class="fa-2x fa-regular fa-circle-right disabled-link"></i>
+        {% endif %}
+    </div>
+
+    <div class="artlicle-comment">
+
+    </div>
 </main>
 {% endblock %}

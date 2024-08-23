@@ -11,3 +11,17 @@
     font-weight: bold;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'Montserrat-Thin';
+    src: url('../fonts/Montserrat-Thin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AbhayaLibreLatin';
+    src: url('../fonts/AbhayaLibreLatin-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
