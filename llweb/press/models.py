@@ -1,4 +1,4 @@
-from django.db import models
+from django.db import models, transaction
 from django.core.validators import EmailValidator
 
 from users.models import Editor
@@ -31,8 +31,39 @@ class Article(models.Model):
         verbose_name='Cuerpo'
     )
 
+    prev_article = models.OneToOneField('self',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='related_next_article'
+    )
+
+    next_article = models.OneToOneField('self',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='related_prev_article'
+    )
+
     creation = models.DateTimeField(auto_now_add=True)
     modification = models.DateTimeField(auto_now=True)
+
+    @transaction.atomic
+    def save(self, *args, **kwargs):
+        if self.pk is None:
+            super().save(*args, **kwargs)
+            first_article = Article.objects.filter(prev_article__isnull=True).exclude(id=self.id).first()
+
+            if first_article and first_article != self:
+                first_article.prev_article = self
+                first_article.save(update_fields=['prev_article'])
+
+                self.prev_article = None
+                self.next_article = first_article
+                self.save(update_fields=['prev_article', 'next_article'])
+
+        else:
+            super().save(*args, **kwargs)
 
 
 class Comment(models.Model):

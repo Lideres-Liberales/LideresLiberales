@@ -24,6 +24,8 @@ class Migration(migrations.Migration):
                 ('creation', models.DateTimeField(auto_now_add=True)),
                 ('modification', models.DateTimeField(auto_now=True)),
                 ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='article', to='users.editor')),
+                ('next_article', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='related_prev_article', to='press.article')),
+                ('prev_article', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='related_next_article', to='press.article')),
             ],
             options={
                 'verbose_name': 'Articulo',

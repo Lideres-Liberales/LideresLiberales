@@ -10,6 +10,8 @@ class ArticleAdmin(admin.ModelAdmin):
     search_fields = ('title', 'author', 'featured_image', 'creation', 'modification')
     ordering = ['creation']
 
+    exclude = ('prev_article', 'next_article')
+
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
