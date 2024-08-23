@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/news.css' %}">
+{% endblock %}
+
+{% block content %}
+<main>
+    <h1>{{ article.title }}</h1>
+
+    {% if article.prev_article_id %}
+        <a href="{% url 'news-details' pk=article.prev_article_id %}">anterior</a>
+    {% endif %}
+
+    {% if article.next_article_id %}
+        <a href="{% url 'news-details' pk=article.next_article_id %}">siguiente</a>
+    {% endif %}
+</main>
+{% endblock %}

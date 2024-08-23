@@ -7,4 +7,9 @@ urlpatterns = [
         view=ArticleListView.as_view(),
         name='news'
     ),
+    path(
+        route='prensa/<int:pk>',
+        view=ArticleView.as_view(),
+        name='news-details'
+    ),
 ]
