@@ -20,12 +20,18 @@ class CommentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        for field in self.fields.values():
-            widget = field.widget.attrs
-            classes = 'form-control no-border-input', widget.get('class', '')
+        base_classes = 'form-control no-border-input'
 
-            widget['class'] = ' '.join(map(str, classes))
+        for field_name, field in self.fields.items():
+            widget = field.widget.attrs
             widget['placeholder'] = field.label
+
+            extra_class = widget.get('class', '') + ' '
+
+            if self.is_bound and field_name in self.errors:
+                widget['class'] = extra_class+ base_classes + ' is-invalid'
+            else:
+                widget['class'] = extra_class+ base_classes
 
     def persist(self, article_pk):
         instance = super().save(commit=False)

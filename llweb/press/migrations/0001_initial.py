@@ -38,7 +38,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=50, verbose_name='Nombre')),
                 ('email', models.EmailField(max_length=254, validators=[django.core.validators.EmailValidator()], verbose_name='Correo electronico')),
-                ('url', models.URLField(verbose_name='Url')),
+                ('url', models.URLField(blank=True, verbose_name='Url')),
                 ('message', models.CharField(max_length=200, verbose_name='Mensaje')),
                 ('creation', models.DateTimeField(auto_now_add=True)),
                 ('modification', models.DateTimeField(auto_now=True)),

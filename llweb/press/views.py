@@ -30,7 +30,7 @@ class ArticleView(DetailView, FormView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['comment_form'] = self.get_form()
+        context.setdefault('form', self.get_form())
 
         return context
 
@@ -38,6 +38,11 @@ class ArticleView(DetailView, FormView):
         form.persist(self.kwargs.get(self.pk_url_kwarg))
 
         return super().form_valid(form)
+
+    def form_invalid(self, form):
+        self.object = self.get_object()
+
+        return super().form_invalid(form)
 
     def get_success_url(self):
         pk = self.kwargs.get(self.pk_url_kwarg)

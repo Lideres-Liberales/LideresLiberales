@@ -194,6 +194,11 @@ main {
     margin: 0 auto;
 }
 
+.artlicle-comment {
+    max-width: calc(850px - 0.5rem);
+    margin: 0 auto;
+}
+
 .disabled-link {
     pointer-events: none;
     color: #6c757d;
@@ -213,7 +218,7 @@ main {
         max-width: calc(850px - 4.5rem);
     }
 
-    .artlicle-navigation {
+    .artlicle-navigation, .artlicle-comment {
         max-width: calc(850px - 4.5rem);
     }
 }

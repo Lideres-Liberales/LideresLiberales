@@ -100,7 +100,8 @@ class Comment(models.Model):
 
     url = models.URLField(
         verbose_name='Url',
-        max_length=200
+        max_length=200,
+        blank=True
     )
 
     message = models.CharField(
