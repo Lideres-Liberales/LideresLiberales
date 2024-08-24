@@ -34,14 +34,14 @@ class Article(models.Model):
     prev_article = models.OneToOneField('self',
         null=True,
         blank=True,
-        on_delete=models.SET_NULL,
+        on_delete=models.DO_NOTHING,
         related_name='related_next_article'
     )
 
     next_article = models.OneToOneField('self',
         null=True,
         blank=True,
-        on_delete=models.SET_NULL,
+        on_delete=models.DO_NOTHING,
         related_name='related_prev_article'
     )
 
@@ -64,6 +64,22 @@ class Article(models.Model):
 
         else:
             super().save(*args, **kwargs)
+
+    @transaction.atomic
+    def delete(self, *args, **kwargs):
+        prev_ = self.prev_article_id
+        next_ = self.next_article_id
+        article = Article.objects
+
+        super().delete(*args, **kwargs)
+
+        if prev_ and next_:
+            article.filter(pk=prev_).update(next_article_id=next_)
+            article.filter(pk=next_).update(prev_article_id=prev_)
+        elif prev_:
+            article.filter(pk=prev_).update(next_article_id=None)
+        elif next_:
+            article.filter(pk=next_).update(prev_article_id=None)
 
 
 class Comment(models.Model):
