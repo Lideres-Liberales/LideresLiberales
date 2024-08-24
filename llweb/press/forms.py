@@ -26,3 +26,9 @@ class CommentForm(forms.ModelForm):
 
             widget['class'] = ' '.join(map(str, classes))
             widget['placeholder'] = field.label
+
+    def persist(self, article_pk):
+        instance = super().save(commit=False)
+        instance.article_id = article_pk
+
+        return instance.save()
