@@ -39,7 +39,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=50, verbose_name='Nombre')),
                 ('email', models.EmailField(max_length=254, validators=[django.core.validators.EmailValidator()], verbose_name='Correo electronico')),
                 ('url', models.URLField(verbose_name='Url')),
-                ('message', models.CharField(max_length=200, verbose_name='Nombre')),
+                ('message', models.CharField(max_length=200, verbose_name='Mensaje')),
                 ('creation', models.DateTimeField(auto_now_add=True)),
                 ('modification', models.DateTimeField(auto_now=True)),
                 ('article', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='comments', to='press.article')),

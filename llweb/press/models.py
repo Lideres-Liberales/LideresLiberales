@@ -88,7 +88,7 @@ class Comment(models.Model):
     )
 
     message = models.CharField(
-        verbose_name='Nombre',
+        verbose_name='Mensaje',
         max_length=200
     )
 

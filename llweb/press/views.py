@@ -2,6 +2,7 @@ from django.views.generic import ListView
 from django.views.generic import DetailView
 
 from .models import Article
+from .forms import CommentForm
 
 
 class ArticleListView(ListView):
@@ -21,3 +22,9 @@ class ArticleView(DetailView):
 
     def get_queryset(self):
         return self.model.objects.select_related('author')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comment_form'] = CommentForm()
+
+        return context

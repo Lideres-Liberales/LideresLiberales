@@ -32,7 +32,8 @@ main {
 /* #endregion */
 
 /* #region news list */
-.news-header, .box-item .title {
+.news-header,
+.box-item .title {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.85rem;
     font-weight: bold;
@@ -195,9 +196,15 @@ main {
 
 .disabled-link {
     pointer-events: none;
-    color: #6c757d; /* Color de texto deshabilitado */
+    color: #6c757d;
     cursor: not-allowed;
     text-decoration: none;
+}
+
+.fixed-size-textarea {
+    width: 100%;
+    height: 15rem;
+    resize: none;
 }
 
 @media (min-width:576px) {
@@ -211,4 +218,20 @@ main {
     }
 }
 
+/* #endregion */
+
+/* #region news details - form */
+.artlicle-comment {
+    margin-top: 2rem;
+}
+
+.artlicle-comment-title {
+    font-family: 'AbhayaLibreLatin', sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+}
+
+.no-border-input {
+    border-radius: 0 !important;
+}
 /* #endregion */
