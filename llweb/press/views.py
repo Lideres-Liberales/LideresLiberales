@@ -13,6 +13,7 @@ class ArticleListView(ListView):
     template_name = 'article_list.html'
     context_object_name = 'articles'
     paginate_by = 6
+    ordering = ['-creation']
 
     def get_queryset(self):
         return self.model.objects.select_related('author')

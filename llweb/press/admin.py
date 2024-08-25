@@ -8,7 +8,7 @@ from .models import Comment
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'featured_image', 'creation', 'modification')
     search_fields = ('title', 'author', 'featured_image', 'creation', 'modification')
-    ordering = ['creation']
+    ordering = ['-creation']
 
     exclude = ('prev_article', 'next_article')
 
@@ -17,4 +17,4 @@ class ArticleAdmin(admin.ModelAdmin):
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'url', 'message')
     search_fields = ('name', 'email', 'url')
-    ordering = ['creation']
+    ordering = ['-creation']

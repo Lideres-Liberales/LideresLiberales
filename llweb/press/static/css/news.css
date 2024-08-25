@@ -106,12 +106,14 @@ main {
     color: #0067ff;
 }
 
-.news-content {
+.news-content, .news-content-details {
     font-family: 'Montserrat-Thin', sans-serif;
     font-size: 1rem;
     line-height: 1.5rem;
     font-weight: 600;
+}
 
+.news-content-details {
     text-align: justify;
 }
 
