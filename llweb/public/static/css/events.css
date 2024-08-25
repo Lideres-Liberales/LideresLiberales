@@ -1,0 +1,40 @@
+
+/* #region separator */
+.separator {
+    background-color: #0f172a;
+    margin: 5px 0;
+
+    width: 100%;
+    height: 10px;
+}
+
+@media (min-width:768px) {
+    .separator {
+        height: 20px;
+    }
+}
+
+@media (min-width:992px) {
+    .separator {
+        height: 40px;
+    }
+}
+/* #endregion */
+
+/* #region Calendar */
+
+#calendar{
+    transform: scale(0.8); /* Reducir el tamaño al 80% */
+    transform-origin: top left; /* Mantener el calendario alineado en la esquina superior izquierda */
+    max-width: 100%; /* Evitar que el calendario se desborde */
+    margin: auto;
+    .fc-day-today {
+        background-color: #162A4C;
+    }
+}
+
+@media (max-width: 768px) {
+    #calendar {
+        transform: scale(0.7); /* Escala más pequeña en pantallas pequeñas */
+    }
+}

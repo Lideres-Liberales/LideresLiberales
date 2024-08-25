@@ -2,6 +2,7 @@ from django.contrib import messages
 
 from django.views.generic.base import TemplateView
 
+from django.shortcuts import render
 
 class Home(TemplateView):
     template_name = 'home.html'
@@ -21,3 +22,7 @@ class News(TemplateView):
 
 class Events(TemplateView):
     template_name = 'events.html'
+
+# def Calendar(request):
+#     eventos = Evento.objects.all()
+#     return render(request, 'eventos.html', {'eventos': eventos})

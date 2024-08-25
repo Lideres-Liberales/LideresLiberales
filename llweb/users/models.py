@@ -125,3 +125,13 @@ class Editor(AbstractUser):
 
     def groups_name(self):
         return 'EditorGroups'
+
+## ------------- Seccion Calendar ------------ ##
+
+# class Evento(models.Model):
+#     titulo = models.CharField(max_length=200)
+#     fecha_inicio = models.DateTimeField()
+#     descripcion = models.TextField(blank=True)
+
+#     def __str__(self):
+#         return self.titulo

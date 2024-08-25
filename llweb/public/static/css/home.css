@@ -59,6 +59,15 @@
     color: white;
 }
 
+/* Cambiar el color de las flechas */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: black; 
+    border-radius: 50%; 
+    background-size: 50px 50px;
+}
+
+
 @media (min-width:768px) {
     .carousel-comp .carousel-paragraph {
         font-size: 0.9125rem;
