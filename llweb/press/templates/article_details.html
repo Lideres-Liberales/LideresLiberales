@@ -5,6 +5,10 @@
 <link rel="stylesheet" href="{% static 'css/news.css' %}">
 {% endblock %}
 
+{% block javascript %}
+<script src="{% static 'js/validations.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 <main>
     <div class="artlicle-content">
@@ -36,7 +40,7 @@
         <h3 class="artlicle-comment-title text-uppercase">Dejá un comentario</h3>
         <p class="news-content">Tu dirección de correo electrónico no será publicada.</p>
 
-        <form class="d-flex flex-column" method="post">
+        <form id="form-comment" class="d-flex flex-column" method="post" novalidate>
             <div>{% csrf_token %}</div>
             {% for field in form %}
                 <div class="pt-1 pb-2">
@@ -45,6 +49,8 @@
                     {% for error in field.errors %}
                         <div class="invalid-feedback">{{ error }}</div>
                     {% endfor %}
+
+                    <div id="{{ field.auto_id }}_error" class="invalid-feedback"></div>
                 </div>
             {% endfor %}
 
