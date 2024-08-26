@@ -1,4 +1,3 @@
-
 /* #region separator */
 .separator {
     background-color: #0f172a;
@@ -24,11 +23,12 @@
 /* #region Calendar */
 
 #calendar{
-    transform: scale(0.8); /* Reducir el tamaño al 80% */
-    transform-origin: top left; /* Mantener el calendario alineado en la esquina superior izquierda */
-    max-width: 100%; /* Evitar que el calendario se desborde */
+    transform-origin: top left;
+    max-width: 800px;
     margin: auto;
-    .fc-day-today {
+    text-transform: uppercase;
+
+    .fc-day-events {
         background-color: #162A4C;
     }
 }

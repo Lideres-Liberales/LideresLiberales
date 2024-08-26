@@ -20,9 +20,12 @@ class News(TemplateView):
     template_name = 'news.html'
 
 
-class Events(TemplateView):
+class Evento(TemplateView):
     template_name = 'events.html'
-
-# def Calendar(request):
-#     eventos = Evento.objects.all()
-#     return render(request, 'eventos.html', {'eventos': eventos})
+    
+def calendario(request):
+    events = Evento.objects.all()
+    context = {
+        'eventos': events
+    }
+    return render(request, 'events.html', context)
