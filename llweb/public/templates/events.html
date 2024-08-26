@@ -3,7 +3,6 @@
 
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/events.css' %}">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.15/index.min.js"></script>
 {% endblock %}
 
 
@@ -18,6 +17,11 @@
     <h1>EVENTOS VIRTUALES</h1>
     <p>En construcción</p>
     <br>
+    {% for evento in eventos %}
+        title: '{{ evento.titulo }}',
+        start: '{{ evento.fecha_inicio|date:"Y-m-dTH:i:s" }}',
+        description: 'Descripción: {{ evento.descripcion }}'
+    {% endfor %}    
     <br>
     
     <div class="separator"></div>
@@ -69,9 +73,3 @@
         </script>
 </main>
 {% endblock %}
-
-{% comment %} 
-Queria poner un calendario pero me quedo en ingles
-Hay partes del calendario en url, view, models porque intente vincularlo con el admin de Django
-El calendario debe tener Titulo, Lugar, Zona, Hora, Descripcion  
-{% endcomment %}

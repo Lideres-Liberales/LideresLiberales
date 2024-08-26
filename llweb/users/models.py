@@ -137,4 +137,4 @@ class Evento(models.Model):
         db_table = "evento"
 
     def __str__(self):
-        return self.evento
+        return self.titulo

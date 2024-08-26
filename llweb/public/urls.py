@@ -24,7 +24,7 @@ urlpatterns = [
     ),
     path(
         route='eventos',
-        view=Evento.as_view(),
+        view=Calendar.as_view(),
         name='events'
     ),
 ]
