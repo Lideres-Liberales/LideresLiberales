@@ -3,6 +3,8 @@
 
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/join.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-ZenhVNpHmPwQGorRXWGEg3wEbfdRLhgvCWg6YaIu7z2aTW4xoWpikGjD3ARvSeC7"   
+ crossorigin="anonymous">
 {% endblock %}
 
 {% block content %}
@@ -16,8 +18,10 @@
     <div class="separator"></div>
 
     <div class="container">
+        <div class="row my-4">
+            <div class="col-12 col-xl-6 mb-4">
         <!-- Formulario -->
-        <div class="form-container">
+        <div class="form-container">           
             <h2 style="text-align: center;">SUMATE DE MANERA REMOTA</h2>
             <form>
                 <input type="text" placeholder="Escriba su nombre" required>
@@ -27,8 +31,13 @@
                 <button type="submit">UNIRME A LÍDERES LIBERALES</button>
             </form>
         </div>
+    </div>
 
-        <!-- Carrusel -->
+
+    <div class="col-12 col-xl-6">
+        <div class="carousel-container col-12 mb-4">
+       
+    <!-- Carrusel -->
         <div id="carousel_id" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carousel_id" data-bs-slide-to="0" aria-label="Slide 1"
