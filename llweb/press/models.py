@@ -81,6 +81,8 @@ class Article(models.Model):
         elif next_:
             article.filter(pk=next_).update(prev_article_id=None)
 
+    def __str__(self):
+        return f'{self.title}'
 
 class Comment(models.Model):
     class Meta:
