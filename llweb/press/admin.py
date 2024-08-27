@@ -1,7 +1,17 @@
 from django.contrib import admin
+from django import forms
 
+from .widgets import Wysiwyg
 from .models import Article
 from .models import Comment
+
+
+class ArticleForm(forms.ModelForm):
+    class Meta:
+        model = Article
+        fields = '__all__'
+        exclude = ('prev_article', 'next_article')
+        widgets = {'body': Wysiwyg()}
 
 
 @admin.register(Article)
@@ -10,7 +20,8 @@ class ArticleAdmin(admin.ModelAdmin):
     search_fields = ('title', 'author', 'featured_image', 'creation', 'modification')
     ordering = ['-creation']
 
-    exclude = ('prev_article', 'next_article')
+    form = ArticleForm
+    change_form_template = 'admin/article_form_admin.html'
 
 
 @admin.register(Comment)

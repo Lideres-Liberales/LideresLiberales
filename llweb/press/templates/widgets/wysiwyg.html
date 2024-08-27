@@ -1,0 +1,110 @@
+<div class="input-wysiwyg">
+    <div class="">
+        <div class="temp">
+            <div class="btn-group">
+                <button id="sq-undo" type="button" class="btn">
+                    <i class="fa-solid fa-rotate-left"></i>
+                </button>
+                <button id="sq-redo" type="button" class="btn">
+                    <i class="fa-solid fa-rotate-right"></i>
+                </button>
+            </div>
+
+            <div class="btn-group">
+                <button id="xxx1" type="button" class="btn">
+                    <i class="fa-solid fa-font"></i>
+                </button>
+                <button id="xxx2" type="button" class="btn">
+                    <i class="fa-solid fa-text-height"></i>
+                </button>
+                <button id="xxx3" type="button" class="btn">
+                    <i class="fa-solid fa-paint-roller"></i>
+                </button>
+            </div>
+
+            <div class="btn-group">
+                <button id="sq-removeAllFormatting" type="button" class="btn">
+                    <i class="fa-solid fa-broom"></i>
+                </button>
+            </div>
+
+            <div class="btn-group">
+                <button id="sq-makeHeading" type="button" class="btn">
+                    <i class="fa-solid fa-heading"></i>
+                </button>
+                <button id="sq-bold" type="button" class="btn">
+                    <i class="fa-solid fa-bold"></i>
+                </button>
+                <button id="sq-italic" type="button" class="btn">
+                    <i class="fa-solid fa-italic"></i>
+                </button>
+                <button id="sq-underline" type="button" class="btn">
+                    <i class="fa-solid fa-underline"></i>
+                </button>
+            </div>
+
+            <div class="btn-group">
+                <button id="sq-alignLeft" type="button" class="btn">
+                    <i class="fa-solid fa-align-left"></i>
+                </button>
+                <button id="sq-alignCenter" type="button" class="btn">
+                    <i class="fa-solid fa-align-center"></i>
+                </button>
+                <button id="sq-alignRight" type="button" class="btn">
+                    <i class="fa-solid fa-align-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="temp">
+            <div class="btn-group">
+                <button id="sq-heading1" type="button" class="btn">3.7r</button>
+                <button id="sq-heading2" type="button" class="btn">3.1r</button>
+                <button id="sq-heading3" type="button" class="btn">2.6r</button>
+                <button id="sq-heading4" type="button" class="btn">2.2r</button>
+                <button id="sq-heading5" type="button" class="btn">1.8r</button>
+                <button id="sq-heading6" type="button" class="btn">1.5r</button>
+                <button id="sq-heading7" type="button" class="btn">1.2r</button>
+                <button id="sq-heading8" type="button" class="btn">1.0r</button>
+            </div>
+
+            <div class="btn-group">
+                <button id="sq-color0" type="button" class="btn">
+                    <div class="rounded-circle"></div>
+                </button>
+                <button id="sq-color1" type="button" class="btn">
+                    <div class="rounded-circle""></div>
+                </button>
+                <button id="sq-color2" type="button" class="btn">
+                    <div class="rounded-circle""></div>
+                </button>
+                <button id="sq-color3" type="button" class="btn">
+                    <div class="rounded-circle"></div>
+                </button>
+                <button id="sq-color4" type="button" class="btn">
+                    <div class="rounded-circle"></div>
+                </button>
+                <button id="sq-color5" type="button" class="btn">
+                    <div class="rounded-circle"></div>
+                </button>
+                <button id="sq-color6" type="button" class="btn">
+                    <div class="rounded-circle"></div>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="editor" contenteditable="true" class="form-control">
+    </div>
+
+    <textarea
+        id="id_{{ widget.name }}"
+        name="{{ widget.name }}"
+        {% include "django/forms/widgets/attrs.html" %}
+        style="visibility: hidden;"
+        class="wysiwyg wysiwyg-textarea"
+    >
+        {{ widget.value }}
+    </textarea>
+</div>

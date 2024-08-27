@@ -15,7 +15,7 @@
         <h2 class="artlicle-content-title text-uppercase">{{ article.title }}</h2>
         <p class="news-info">Por {{ article.author }} / {{ article.creation|date:"j, F, Y" }}</p>
         <img src="{{ article.featured_image.url }}" alt="Imagen de la noticia">
-        <p class="news-content-details py-4">{{ article.body }}</p>
+        <div class="news-content-details py-4">{{ article.body|safe }}</div>
     </div>
 
     <div class="artlicle-navigation">
