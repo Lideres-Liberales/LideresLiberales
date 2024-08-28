@@ -2214,7 +2214,6 @@
         toPlainText: null,
         sanitizeToDOMFragment: (html) => {
           if (typeof DOMPurify !== 'undefined') {
-            // Si DOMPurify está presente, sanitiza el HTML
             const frag = DOMPurify.sanitize(html, {
               ALLOW_UNKNOWN_PROTOCOLS: true,
               WHOLE_DOCUMENT: false,
@@ -2223,8 +2222,10 @@
               FORCE_BODY: false
             });
             return frag ? document.importNode(frag, true) : document.createDocumentFragment();
+          } else if (typeof htmlSanitizer !== 'undefined') {
+            const element = htmlSanitizer.sanitize(html);
+            return element ? document.importNode(element.content, true) : document.createDocumentFragment();
           } else {
-            // Si DOMPurify no está presente, solo crea un fragmento de documento vacío
             const template = document.createElement('template');
             template.innerHTML = html;
             return document.importNode(template.content, true);
