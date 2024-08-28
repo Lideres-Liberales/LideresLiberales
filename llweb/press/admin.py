@@ -29,3 +29,5 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'url', 'message')
     search_fields = ('name', 'email', 'url')
     ordering = ['-creation']
+
+    change_form_template = 'admin/comment_form_admin.html'

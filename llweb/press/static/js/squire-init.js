@@ -127,7 +127,6 @@ class TextEditor {
         this.setFont('#sq-heading7', '1.2rem');
         this.setFont('#sq-heading8', '1.0rem');
 
-        this.setTextColor('#sq-color0', '#000000');
         this.setTextColor('#sq-color1', '#dc3545');
         this.setTextColor('#sq-color2', '#ffc107');
         this.setTextColor('#sq-color3', '#28a745');

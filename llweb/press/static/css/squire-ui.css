@@ -24,6 +24,7 @@
 .temp {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .btn-group {
@@ -79,30 +80,26 @@
 }
 
 .btn:nth-child(1) .rounded-circle {
-    background-color: #000000;
-}
-
-.btn:nth-child(2) .rounded-circle {
     background-color: #dc3545;
 }
 
-.btn:nth-child(3) .rounded-circle {
+.btn:nth-child(2) .rounded-circle {
     background-color: #ffc107;
 }
 
-.btn:nth-child(4) .rounded-circle {
+.btn:nth-child(3) .rounded-circle {
     background-color: #28a745;
 }
 
-.btn:nth-child(5) .rounded-circle {
+.btn:nth-child(4) .rounded-circle {
     background-color: #007bff;
 }
 
-.btn:nth-child(6) .rounded-circle {
+.btn:nth-child(5) .rounded-circle {
     background-color: #6c757d;
 }
 
-.btn:nth-child(7) .rounded-circle {
+.btn:nth-child(6) .rounded-circle {
     background-color: #fd7e14;
 }
 
@@ -111,14 +108,22 @@
     height: 20rem;
     font-size: 1rem;
     line-height: 1.5;
-    color: #495057;
 
-    background-color: #fff;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-
+    width: auto !important;
     padding: .375rem .75rem;
     margin-top: 1rem;
 
     overflow: auto;
+}
+
+.vTextField {
+    width: 100%;
+}
+
+.related-widget-wrapper {
+    flex-wrap: nowrap;
+}
+
+.related-widget-wrapper select {
+    width: 100%;
 }
