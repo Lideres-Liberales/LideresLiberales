@@ -43,11 +43,28 @@ main {
 }
 
 .news-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(var(--card-zise), 1fr));
-    gap: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
 
     margin-bottom: 5rem;
+}
+
+.news {
+    width: 100%;
+    min-width: 300px;
+}
+
+@media (min-width:600px) {
+    .news {
+        width: calc((100% - 1rem) / 2);
+    }
+}
+
+@media (min-width:900px) {
+    .news {
+        width: calc((100% - 2rem) / 3);
+    }
 }
 
 .news {
@@ -55,7 +72,7 @@ main {
     flex-direction: column;
 
     box-sizing: border-box;
-    width: 100%;
+    /* width: 100%; */
     height: auto;
 
     border: var(--border) none lavender;

@@ -370,6 +370,16 @@ footer p,
     font-family: Arial, sans-serif;
 }
 
+.pagination, .step-links a {
+    font-size: 0.75rem;
+}
+
+@media (min-width:450px) {
+    .pagination {
+        font-size: 1rem;
+    }
+}
+
 .step-links {
     display: inline-block;
     margin: 0 auto;
