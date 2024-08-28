@@ -244,6 +244,21 @@ main {
 
 /* #endregion */
 
+/* #region comment */
+.artlicle-comment-title {
+    text-align: center;
+}
+
+.artlicle-comment-card {
+    box-shadow: 0 .25rem .25rem rgba(0, 0, 0, .075);
+    padding: 15px;
+    margin: 10px 0;
+}
+.artlicle-comment-message {
+    margin-left: 20px;
+}
+/* #endregion */
+
 /* #region news details - form */
 .artlicle-comment {
     margin-top: 2rem;

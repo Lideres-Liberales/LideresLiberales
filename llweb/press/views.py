@@ -4,7 +4,7 @@ from django.views.generic import ListView
 from django.views.generic import DetailView
 from django.views.generic import FormView
 
-from .models import Article
+from .models import Article, Comment
 from .forms import CommentForm
 
 
@@ -35,10 +35,16 @@ class ArticleView(DetailView, FormView):
         context = super().get_context_data(**kwargs)
         context.setdefault('form', self.get_form())
 
+        return self.include_comment(context)
+
+    def include_comment(self, context):
+        comments = Comment.filter_by_article_id(self.get_pk())
+        context['comments'] = comments
+
         return context
 
     def form_valid(self, form):
-        form.persist(self.kwargs.get(self.pk_url_kwarg))
+        form.persist(self.get_pk())
 
         return super().form_valid(form)
 
@@ -48,6 +54,7 @@ class ArticleView(DetailView, FormView):
         return super().form_invalid(form)
 
     def get_success_url(self):
-        pk = self.kwargs.get(self.pk_url_kwarg)
+        return reverse(self.success_url, kwargs={'pk': self.get_pk()})
 
-        return reverse(self.success_url, kwargs={'pk': pk})
+    def get_pk(self):
+        return self.kwargs.get(self.pk_url_kwarg)

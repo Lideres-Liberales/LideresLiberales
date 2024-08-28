@@ -309,7 +309,7 @@ def set_up(apps, scheme_editor):
         ''',
     )
 
-    Article.objects.create(
+    article = Article(
         title='firma pre acuerdo LL',
         author=walter_hugo,
         featured_image='articles/firma_preacuerdo.jpeg',
@@ -319,6 +319,16 @@ def set_up(apps, scheme_editor):
         ''',
     )
 
+    article.save()
+
+    for i in range(10):
+        Comment.objects.create(
+            name=f'{i + 1}',
+            email=f'{i + 1}@email.com',
+            url=f'http://www.{i + 1}.com',
+            message=f'message {i + 1}',
+            article=article
+        )
 
 class Migration(migrations.Migration):
     dependencies=[

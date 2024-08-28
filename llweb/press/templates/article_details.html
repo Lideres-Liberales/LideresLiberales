@@ -37,6 +37,25 @@
     </div>
 
     <div class="artlicle-comment">
+        {% if comments %}
+            <h3 class="artlicle-comment-title text-uppercase">Comentarios</h3>
+        {% else %}
+            <h3 class="artlicle-comment-title text-uppercase">No hay comentarios.</h3>
+        {% endif %}
+
+        {% for comment in comments %}
+            <div class="artlicle-comment-card">
+                <div class="artlicle-commentname">
+                    <strong>Usuario: {{ comment.name }}</strong>
+                </div>
+                <div class="artlicle-commentmessage">
+                    <p>{{ comment.message }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="artlicle-comment">
         <h3 class="artlicle-comment-title text-uppercase">Dejá un comentario</h3>
         <p class="news-content">Tu dirección de correo electrónico no será publicada.</p>
 

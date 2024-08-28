@@ -119,3 +119,7 @@ class Comment(models.Model):
 
     creation = models.DateTimeField(auto_now_add=True)
     modification = models.DateTimeField(auto_now=True)
+
+    @staticmethod
+    def filter_by_article_id(id):
+        return Comment.objects.filter(article_id=id).order_by('-creation')[:5]
