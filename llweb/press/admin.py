@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django import forms
 
-from .widgets import Wysiwyg
+from root.widgets import Wysiwyg
 from .models import Article
 from .models import Comment
 
@@ -30,4 +30,4 @@ class CommentAdmin(admin.ModelAdmin):
     search_fields = ('name', 'email', 'url')
     ordering = ['-creation']
 
-    change_form_template = 'admin/comment_form_admin.html'
+    change_form_template = 'admin/custom_form_admin.html'
