@@ -1,6 +1,6 @@
 class HtmlSanitizer {
     constructor() {
-        this.allowedTags = ['div', 'ol', 'li', 'span', 'b', 'i', 'u', 'br'];
+        this.allowedTags = ['p', 'ol', 'li', 'span', 'b', 'i', 'u', 'br'];
         this.allowedAttributes = ['class', 'style'];
     }
 

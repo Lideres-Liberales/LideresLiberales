@@ -1,3 +1,5 @@
+{% load markdown_filters %}
+
 <div class="input-wysiwyg">
     <div id="tool-bar">
         <div class="temp">
@@ -95,6 +97,6 @@
         {% include "django/forms/widgets/attrs.html" %}
         class="wysiwyg-textarea"
     >
-        {{ widget.value }}
+        {{ widget.value|markdown_to_html }}
     </textarea>
 </div>
