@@ -5,71 +5,101 @@
 <link rel="stylesheet" href="{% static 'css/events.css' %}">
 {% endblock %}
 
-
 {% block content %}
 <main>
+    <!-- Eventos Presencial -->
     <div class="separator"></div>
     <h1>EVENTOS PRESENCIALES</h1>
-    
-    <br>
-    <br>
+
+    <!-- Contenido -->
+    <div class="wrap-cont">
+        <div class="box-cont">
+            <div class="box-top">
+                <img class="box-image"
+                    src="https://lideresliberales.com/wp-content/uploads/2024/07/GT2QeMlXYAApjFG.jpeg"
+                    alt="PreAcuerdo">
+                <div class="title-flex">
+                    <h3 class="box-title">Firma Preacuerdo LL</h3>
+                </div>
+                <p class="description">Seguimos celebrando la firma del Pre Acuerdo Nacional, el cual permite que Lideres Liberales llegue a la provincia de Mendoza de la 
+                    mano de nuestro referente Marcos Sanchéz, la diputada Mercedes Llano y el Presidente del PD en Mendoza, Armando Maggistreti. Además, tuvieron la oportunidad 
+                    de firmar el Pre Acuerdo diversos miembros de CABA y PBA. La unión de lideres y miembros de diferentes regiones demuestra el compromiso compartido por la 
+                    libertad.</p>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!-- Eventos Virtual -->
     <div class="separator"></div>
     <h1>EVENTOS VIRTUALES</h1>
-    <p>En construcción</p>
-    <br>
-    {% for evento in eventos %}
-        title: '{{ evento.titulo }}',
-        start: '{{ evento.fecha_inicio|date:"Y-m-dTH:i:s" }}',
-        description: 'Descripción: {{ evento.descripcion }}'
-    {% endfor %}    
-    <br>
-    
+
+    <div class="wrap-cont">
+        <div class="box-cont">
+            <div class="box-top">
+                <img class="box-image"
+                    src="{% static 'img/Logo-Oficial-mono-1024x1024.png' %}" alt="PBA">
+                <div class="title-flex">
+                    <h3 class="box-title">Cultura y Liderazgo</h3>
+                </div>
+                <p class="description">Agradecemos a todos los presentes por su participación en la charla sobre cultura y liderazgo a cargo del presidente de Lideres 
+                    Liberales PBA Moisés Achen que realizamos recientemente. La sesión fue un éxito y dejo una gran impresión en todos nosotros. Nuestro orador compartió 
+                    información valiosa sobre como la cultura organizacional impacta en el liderazgo efectivo. Discutimos estrategias para fomentar una cultura de innovación, 
+                    colaboración y respeto. Pero esto es solo el comienzo. Pronto continuaremos con más encuentros sobre cultura y liderazgo. Estén atentos a nuestras próximas 
+                    invitaciones. Gracias nuevamente por su participación y compromiso. En unión y libertad.</p>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!-- Eventos a futuro -->
     <div class="separator"></div>
     <h1>PRÓXIMOS EVENTOS</h1>
-        <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css' rel='stylesheet' />
-        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js'></script>
-        <script src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js'></script>
-        <script src='https://cdn.jsdelivr.net/npm/tooltip.js@1.3.3/dist/umd/tooltip.min.js'></script>
 
-        <div id="calendar"></div>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                var calendarEl = document.getElementById('calendar');
-                var calendar = new FullCalendar.Calendar(calendarEl, {
-                    initialView: 'dayGridMonth',
-                    locale: 'es',
-                    headerToolbar: {
-                        left: 'prev,next today',
-                        center: 'title',
-                        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-                    },
-                    buttonText: {
-                        today: 'Hoy',
-                        week: 'Semana',
-                        month: 'Mes',
-                        day: 'Día',
-                        list: 'Lista'
-                    },
-                    events: [
-                        {% for evento in eventos %}
-                        {
-                            title: '{{ evento.titulo }}',
-                            start: '{{ evento.fecha_inicio|date:"Y-m-dTH:i:s" }}',
-                            description: 'Descripción: {{ evento.descripcion }}'
-                        },
-                        {% endfor %}
-                    ],
-                    eventDidMount: function(info) {
-                        var tooltip = new Tooltip(info.el, {
-                            title: info.event.extendedProps.description,
-                            placement: 'top',
-                            trigger: 'hover',
-                            container: 'body'
-                        });
-                    }
-                });
-                calendar.render();
-            });
-        </script>
+    <div class="wrap">
+        <div class="box">
+            <div class="box-top">
+                <img class="box-image"
+                    src="{% static 'img/adelas.jpg' %}" alt="Lugar de Reunión Adela's">
+                <div class="title-flex">
+                    <h3 class="box-title">Reunión Presencial de Zonas PBA</h3>
+                    <p>Fecha: 24/08</p>
+                    <p>Hora: 16hs</p>
+                    <p>Lugar: Caseros</p>
+                </div>
+                <p class="description">En esta reunión, seguiremos comentando la estructura de nuestra agrupacipon, profundizando en nuestra visión y misión. Además, te 
+                    invitamos a participar activamente en la agrupacion.
+                    Los esperamos!.</p>
+            </div>
+            <div class="button-container">
+                <a href="https://forms.gle/xwDou8TcSsK8ppth9" class="event" style="text-decoration: none" target="_blank">ASISTIRE</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="box-top">
+                <img class="box-image"
+                    src="{% static 'img/bencich.jpg' %}" alt="Edificio Bencich">
+                <div class="title-flex">
+                    <h3 class="box-title">Reunión Presencial de CABA</h3>
+                    <p>Fecha: 24/08</p>
+                    <p>Hora: 16hs</p>
+                    <p>Lugar: Capital</p>
+                </div>
+                <p class="description">En esta reunión, seguiremos comentando la estructura de nuestra agrupacipon, profundizando en nuestra visión y misión. Además, te 
+                    invitamos a participar activamente en la agrupacion.
+                    Los esperamos!.</p>
+            </div>
+            <div class="button-container">
+                <a href="https://forms.gle/UjyGQKnrG1U2aHEQ6" class="event" style="text-decoration: none" target="_blank">ASISTIRE</a>
+            </div>
+
+        </div>
+    </div>
+
 </main>
 {% endblock %}

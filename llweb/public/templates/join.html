@@ -1,79 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block css %}
-<link rel="stylesheet" href="{% static 'css/join.css' %}">
-{% endblock %}
-
 {% block content %}
 <main>
-    <h1 style="text-align: center;">Lideres Liberales en Argentina</h1>
-    <br>
-    <p style="text-align: center;">Tenemos como objetivo ser una agrupación nacional. Podes encontrarnos presencialmente
-        en tu provincia o unirte de manera remota. Si deseas apoyar las ideas de la libertad, completa el formulario
-        para que podamos ponernos en contacto.</p>
-
-    <div class="separator"></div>
-
-    <div class="container">
-        <!-- Formulario -->
-        <div class="form-container">
-            <h2 style="text-align: center;">SUMATE DE MANERA REMOTA</h2>
-            <form>
-                <input type="text" placeholder="Escriba su nombre" required>
-                <input type="tel" placeholder="Escriba su celular" required>
-                <input type="email" placeholder="Escriba su email" required>
-                <input type="text" placeholder="Escriba su dirección" required>
-                <button type="submit">UNIRME A LÍDERES LIBERALES</button>
-            </form>
-        </div>
-
-        <!-- Carrusel -->
-        <div id="carousel_id" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carousel_id" data-bs-slide-to="0" aria-label="Slide 1"
-                    class="active" aria-current="true"></button>
-                <button type="button" data-bs-target="#carousel_id" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carousel_id" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                <button type="button" data-bs-target="#carousel_id" data-bs-slide-to="3" aria-label="Slide 4"></button>
-            </div>
-
-            <div class="carousel-inner">
-                <div class="carousel">
-                    <div class="carousel-item active">
-                        <img class="carousel-image" src="{% static 'img/CABA2.jpg' %}" alt="CABA">
-                        <a href="https://forms.gle/AE51qXkE85Uf1PPFA" class="carousel-button" target="_blank" rel="noopener noreferrer">UNITE A CABA</a>
-                    </div>
-
-                    <div class="carousel-item">
-                        <img class="carousel-image" src="{% static 'img/PBA2.jpg' %}" alt="PBA">
-                        <button type="button" class="carousel-button">UNITE A PBA</button>
-                        <a href="https://forms.gle/Pb2nH7NPAMHvZ2F18" class="carousel-button" target="_blank" rel="noopener noreferrer">UNITE A PBA</a>                        
-                    </div>
-
-                    <div class="carousel-item">
-                        <img class="carousel-image" src="{% static 'img/Cordoba2.jpg' %}" alt="Cordoba">
-                        <a href="https://forms.gle/n8yDmFY7bthVv88JA" class="carousel-button" target="_blank" rel="noopener noreferrer">UNITE A COFDOBA</a>
-                    </div>
-
-                    <div class="carousel-item">
-                        <img class="carousel-image" src="{% static 'img/Salta2.jpg' %}" alt="Salta">
-                        <a href="https://forms.gle/PbgjrGKxDS848kbSA" class="carousel-button" target="_blank" rel="noopener noreferrer">UNITE A SALTA</a>
-                    </div>
-                </div>
-
-                <button class="carousel-control-prev" type="button" data-bs-target="#carousel_id" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                </button>
-
-                <button class="carousel-control-next" type="button" data-bs-target="#carousel_id" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                </button>
-            </div>
-        </div>
+    <h1>join</h1>
 </main>
 {% endblock %}
-
-{% comment %} 
- No me gusto como quedo, quedo con mucho espacio el carousel y muy chiquito el formulario 
-{% endcomment %}
