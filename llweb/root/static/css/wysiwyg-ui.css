@@ -4,6 +4,10 @@
     width: 100%;
 }
 
+#editor p {
+    font-size: 1rem;
+}
+
 .input-wysiwyg textarea {
     visibility: hidden;
     position: absolute;

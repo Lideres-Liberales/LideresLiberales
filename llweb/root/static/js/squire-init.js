@@ -10,13 +10,9 @@ class Compare {
     hexToRgb(hex) {
         let r = 0, g = 0, b = 0;
         if (hex.length === 7) { // #RRGGBB
-            r = parseInt(hex.slice(1, 3), 16);
-            g = parseInt(hex.slice(3, 5), 16);
-            b = parseInt(hex.slice(5, 7), 16);
+            [r, g, b] = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16));
         } else if (hex.length === 4) { // #RGB
-            r = parseInt(hex[1] + hex[1], 16);
-            g = parseInt(hex[2] + hex[2], 16);
-            b = parseInt(hex[3] + hex[3], 16);
+            [r, g, b] = [1, 2, 3].map(i => parseInt(hex[i] + hex[i], 16));
         }
         return `rgb(${r}, ${g}, ${b})`;
     }
@@ -41,10 +37,33 @@ class Compare {
 }
 
 class TextEditor {
-    constructor(containerSelector, textareaSelector, toolsBarSelector) {
-        this.editor = null;
-        this.parser = null;
+    colorRules = [
+        { 'id': '#sq-color1', 'tag': 'c1', 'color': '#dc3545' },
+        { 'id': '#sq-color2', 'tag': 'c2', 'color': '#ffc107' },
+        { 'id': '#sq-color3', 'tag': 'c3', 'color': '#28a745' },
+        { 'id': '#sq-color4', 'tag': 'c4', 'color': '#007bff' },
+        { 'id': '#sq-color5', 'tag': 'c5', 'color': '#6c757d' },
+        { 'id': '#sq-color6', 'tag': 'c6', 'color': '#fd7e14' }
+    ];
 
+    fonfRules = [
+        { 'id': '#sq-heading1', 'tag': 'z1', 'font': '3.7em' },
+        { 'id': '#sq-heading2', 'tag': 'z2', 'font': '3.1em' },
+        { 'id': '#sq-heading3', 'tag': 'z3', 'font': '2.6em' },
+        { 'id': '#sq-heading4', 'tag': 'z4', 'font': '2.2em' },
+        { 'id': '#sq-heading5', 'tag': 'z5', 'font': '1.8em' },
+        { 'id': '#sq-heading6', 'tag': 'z6', 'font': '1.5em' },
+        { 'id': '#sq-heading7', 'tag': 'z7', 'font': '1.2em' },
+        { 'id': '#sq-heading8', 'tag': 'z8', 'font': '1.2em' },
+    ];
+
+    alignRules = [
+        { 'id': '#sq-alignLeft', 'action': 'alignLeft', 'tag': 'al', 'class_': 'align-left', 'align': 'left' },
+        { 'id': '#sq-alignCenter', 'action': 'alignCenter', 'tag': 'ac', 'class_': 'align-center', 'align': 'center' },
+        { 'id': '#sq-alignRight', 'action': 'alignRight', 'tag': 'ar', 'class_': 'align-right', 'align': 'right' },
+    ]
+
+    constructor(containerSelector, textareaSelector, toolsBarSelector) {
         this.container = document.querySelector(containerSelector);
         this.textarea = document.querySelector(textareaSelector);
         this.toolsBar = document.querySelector(toolsBarSelector);
@@ -69,99 +88,34 @@ class TextEditor {
         }
 
         this.listenEvents();
-        this.addExtraPattern();
+        this.addPatterns();
     }
 
-    addExtraPattern() {
-        console.log(new Compare().node('SPAN').class_('color').color('#dc3545').build())
+    addPatterns() {
         this.parser.addRule('underline', {
             filter: (node) => node.nodeName === 'U',
             replacement: (content) => `[u]${content}[/u]`
         });
 
-        this.parser.addRule('llweb-color1', {
-            'filter': new Compare().node('SPAN').class_('color').color('#dc3545').build(),
-            'replacement': (content) => `[c1]${content}[/c1]`
+        this.colorRules.forEach(rule => {
+            this.parser.addRule(rule.id, {
+                'filter': new Compare().node('SPAN').class_('color').color(rule.color).build(),
+                'replacement': (content) => `[${rule.tag}]${content}[/${rule.tag}]`
+            });
         });
 
-        this.parser.addRule('llweb-color2', {
-            'filter': new Compare().node('SPAN').class_('color').color('#ffc107').build(),
-            'replacement': (content) => `[c2]${content}[/c2]`
+        this.fonfRules.forEach(rule => {
+            this.parser.addRule(rule.id, {
+                'filter': new Compare().node('SPAN').class_('size').font(rule.font).build(),
+                'replacement': (content) => `[${rule.tag}]${content}[/${rule.tag}]`
+            });
         });
 
-        this.parser.addRule('llweb-color3', {
-            'filter': new Compare().node('SPAN').class_('color').color('#28a745').build(),
-            'replacement': (content) => `[c3]${content}[/c3]`
-        });
-
-        this.parser.addRule('llweb-color4', {
-            'filter': new Compare().node('SPAN').class_('color').color('#007bff').build(),
-            'replacement': (content) => `[c4]${content}[/c4]`
-        });
-
-        this.parser.addRule('llweb-color5', {
-            'filter': new Compare().node('SPAN').class_('color').color('#6c757d').build(),
-            'replacement': (content) => `[c5]${content}[/c5]`
-        });
-
-        this.parser.addRule('llweb-color6', {
-            'filter': new Compare().node('SPAN').class_('color').color('#fd7e14').build(),
-            'replacement': (content) => `[c6]${content}[/c6]`
-        });
-
-        this.parser.addRule('llweb-size1', {
-            'filter': new Compare().node('SPAN').class_('size').font('3.7rem').build(),
-            'replacement': (content) => `[z1]${content}[/z1]`
-        });
-
-        this.parser.addRule('llweb-size2', {
-            'filter': new Compare().node('SPAN').class_('size').font('3.1rem').build(),
-            'replacement': (content) => `[z2]${content}[/z2]`
-        });
-
-        this.parser.addRule('llweb-size3', {
-            'filter': new Compare().node('SPAN').class_('size').font('2.6rem').build(),
-            'replacement': (content) => `[z3]${content}[/z3]`
-        });
-
-        this.parser.addRule('llweb-size4', {
-            'filter': new Compare().node('SPAN').class_('size').font('2.2rem').build(),
-            'replacement': (content) => `[z4]${content}[/z4]`
-        });
-
-        this.parser.addRule('llweb-size5', {
-            'filter': new Compare().node('SPAN').class_('size').font('1.8rem').build(),
-            'replacement': (content) => `[z5]${content}[/z5]`
-        });
-
-        this.parser.addRule('llweb-size6', {
-            'filter': new Compare().node('SPAN').class_('size').font('1.5rem').build(),
-            'replacement': (content) => `[z6]${content}[/z6]`
-        });
-
-        this.parser.addRule('llweb-size7', {
-            'filter': new Compare().node('SPAN').class_('size').font('1.2rem').build(),
-            'replacement': (content) => `[z7]${content}[/z7]`
-        });
-
-        this.parser.addRule('llweb-size8', {
-            'filter': new Compare().node('SPAN').class_('size').font('1.0rem').build(),
-            'replacement': (content) => `[z8]${content}[/z8]`
-        });
-
-        this.parser.addRule('llweb-align-left', {
-            'filter': new Compare().node('P').class_('align-left').align('left').build(),
-            'replacement': (content) => `[al]${content}[/al]`
-        });
-
-        this.parser.addRule('llweb-align-center', {
-            'filter': new Compare().node('P').class_('align-center').align('center').build(),
-            'replacement': (content) => `[ac]${content}[/ac]`
-        });
-
-        this.parser.addRule('llweb-align-right', {
-            'filter': new Compare().node('P').class_('align-right').align('right').build(),
-            'replacement': (content) => `[ar]${content}[/ar]`
+        this.alignRules.forEach(rule => {
+            this.parser.addRule(rule.id, {
+                'filter': new Compare().node('P').class_(rule.class_).align(rule.align).build(),
+                'replacement': (content) => `[${rule.tag}]${content}[/${rule.tag}]`
+            });
         });
     }
 
@@ -253,21 +207,18 @@ class TextEditor {
             return name === action && test;
         };
 
-        this.setFont('#sq-heading1', '3.7rem');
-        this.setFont('#sq-heading2', '3.1rem');
-        this.setFont('#sq-heading3', '2.6rem');
-        this.setFont('#sq-heading4', '2.2rem');
-        this.setFont('#sq-heading5', '1.8rem');
-        this.setFont('#sq-heading6', '1.5rem');
-        this.setFont('#sq-heading7', '1.2rem');
-        this.setFont('#sq-heading8', '1.0rem');
+        this.fonfRules.forEach(rule => {
+            console.log(rule.font)
+            this.setFont(rule.id, rule.font);
+        });
 
-        this.setTextColor('#sq-color1', '#dc3545');
-        this.setTextColor('#sq-color2', '#ffc107');
-        this.setTextColor('#sq-color3', '#28a745');
-        this.setTextColor('#sq-color4', '#007bff');
-        this.setTextColor('#sq-color5', '#6c757d');
-        this.setTextColor('#sq-color6', '#fd7e14');
+        this.colorRules.forEach(rule => {
+            this.setTextColor(rule.id, rule.color);
+        });
+
+        this.alignRules.forEach(rule => {
+            this.loadAction(rule.id, rule.action);
+        });
 
         this.loadAction('#sq-undo', 'undo');
         this.loadAction('#sq-redo', 'redo');
@@ -279,10 +230,6 @@ class TextEditor {
         this.loadAction('#sq-bold', 'bold');
         this.loadAction('#sq-italic', 'italic');
         this.loadAction('#sq-underline', 'underline');
-
-        this.loadAction('#sq-alignLeft', 'alignLeft');
-        this.loadAction('#sq-alignCenter', 'alignCenter');
-        this.loadAction('#sq-alignRight', 'alignRight');
     }
 }
 

@@ -28,8 +28,6 @@ class CustomInlineProcessor(InlineProcessor):
         return el, m.start(0), m.end(0)
 
 class LlwebExtension(Extension):
-    """Markdown extension to handle [u] and [/u] tags."""
-    
     def __init__(self, **kwargs):
         self.config = {}
         super().__init__(**kwargs)
