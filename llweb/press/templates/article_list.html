@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/news.css' %}">
+{% endblock %}
+
+{% block content %}
+<main>
+    <h2 class="news-header text-uppercase">noticias</h2>
+    <div class="separator"></div>
+
+    <section class="news-container">
+        {% for article in articles %}
+            <article class="news" onclick="redirect(`{% url 'news-details' pk=article.id %}`)">
+                <img src="{{ article.featured_image.url }}" alt="Imagen de la noticia">
+
+                <div class="news-body">
+                    <p class="news-title text-uppercase" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ article.title }}">
+                        {{ article.title }}
+                    </p>
+    
+                    <p class="news-info">
+                        Por: {{ article.author }} • {{ article.creation|date:"j, F, Y" }}
+                    </p>
+    
+                    <p class="news-content">
+                        {{ article.body|slice:":100" }}...
+                    </p>
+                </div>
+            </article>
+
+        {% empty %}
+            <div>No articles available.</div>
+        {% endfor %}
+    </section>
+
+    {% include "components/pagination.html" %}
+
+    <h2 class="news-header text-uppercase">contacto prensa</h2>
+    <div class="separator"></div>
+
+    <div class="box-item">
+        <img src="{% static 'img/Logo-Oficial-mono-1024x1024.png' %}" alt="liberes_liberales">
+        <p class="title">EQUIPO DE COMUNICACIONES</p>
+        <p class="content">Para el contacto con el equipo de comunicaciones, puede referirse al mail de nuestro equipo.</p>
+        <p class="content"><a href="mailto:comunicaciones@lideresliberales.com">comunicaciones@lideresliberales.com</a></p>
+    </div>
+</main>
+{% endblock %}

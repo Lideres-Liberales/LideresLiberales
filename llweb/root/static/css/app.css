@@ -362,3 +362,64 @@ footer p,
 }
 
 /* #endregion */
+
+/* #region pagination */
+.pagination {
+    text-align: center;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+
+.pagination, .step-links a {
+    font-size: 0.75rem;
+}
+
+@media (min-width:450px) {
+    .pagination {
+        font-size: 1rem;
+    }
+}
+
+.step-links {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.step-links a {
+    font-family: "Montserrat", sans-serif;
+    text-decoration: none;
+    color: #007bff;
+    padding: 8px 16px;
+    margin: 0 4px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.step-links a:hover {
+    background-color: #f1f1f1;
+}
+
+.step-links .current {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 0 4px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    color: #333;
+    font-weight: bold;
+}
+
+.step-links .disabled a {
+    color: #aaa;
+    border-color: #ddd;
+    cursor: not-allowed;
+    pointer-events: none;
+    text-decoration: none;
+}
+
+.step-links .disabled a:hover {
+    background-color: transparent;
+}
+
+/* #endregion */

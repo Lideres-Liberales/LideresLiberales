@@ -35,7 +35,7 @@ class Provinces(models.TextChoices):
 class Profile(models.Model):
     image = models.ImageField(
         verbose_name='Imagen',
-        upload_to='seguridad',
+        upload_to='profiles',
         null=True,
         blank=True
     )
@@ -111,8 +111,8 @@ class BoardOfDirectors(AbstractUser):
 
 class Member(AbstractUser):
     class Meta:
-        verbose_name = 'Mienbro'
-        verbose_name_plural = 'Mienbros'
+        verbose_name = 'Miembro'
+        verbose_name_plural = 'Miembros'
 
     def groups_name(self):
         return 'MemberGroups'
