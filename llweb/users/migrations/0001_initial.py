@@ -65,8 +65,8 @@ class Migration(migrations.Migration):
                 ('modification', models.DateTimeField(auto_now=True)),
             ],
             options={
-                'verbose_name': 'Mienbro',
-                'verbose_name_plural': 'Mienbros',
+                'verbose_name': 'Miembro',
+                'verbose_name_plural': 'Miembros',
             },
             bases=('auth.user',),
             managers=[
