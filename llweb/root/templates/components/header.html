@@ -30,8 +30,12 @@
 
     <div id="nav-search" class="nav-search d-frex-row">
 
-        <form id="nav-search-collapse" class="collapse-h">
-            <input id="inputSearch" class="nav-search-input" type="text" placeholder="Escribe algo...">
+        <form id="nav-search-collapse" class="collapse-h" action="{{ form_action }}">
+            {% if form_search %}
+                {{ form_search.query }}
+            {% else %}
+                <input type="text" name="query" class="nav-search-input" placeholder="Escriba aqui" maxlength="100">
+            {% endif %}
         </form>
 
         <button id="search-toggler" data-collapsed="true" class="search-btn">

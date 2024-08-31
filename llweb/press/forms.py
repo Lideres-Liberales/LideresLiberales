@@ -3,6 +3,19 @@ from django import forms
 from .models import Comment
 
 
+class SearchForm(forms.Form):
+    query = forms.CharField(
+        max_length = 100,
+        required = False,
+        widget = forms.TextInput(
+            attrs = {
+                'class': 'nav-search-input',
+                'placeholder': 'Escriba aqui'
+            }
+        )
+    )
+
+
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
