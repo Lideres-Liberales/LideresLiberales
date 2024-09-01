@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'public.apps.PublicConfig',
     'users.apps.UsersConfig',
     'press.apps.PressConfig',
+    'join.apps.JoinConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',
