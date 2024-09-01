@@ -1,33 +1,34 @@
 from django import forms
 from django.core.mail import send_mail
 
+from llweb.settings import DEFAULT_TO_EMAIL
+
 
 class ContactForm(forms.Form):
     name = forms.CharField(
         max_length=100,
-        widget=forms.TextInput( attrs={
+        widget=forms.TextInput(attrs={
             'placeholder': 'Escriba su nombre'
         })
     )
 
     movil_phone = forms.CharField(
-        widget=forms.TextInput( attrs={
+        widget=forms.TextInput(attrs={
             'placeholder': 'Escriba su celular',
             'pattern': r'\+?\d[\d\s\-\(\)]*'
         })
     )
 
     email = forms.EmailField(
-        widget = forms.EmailInput( attrs = {
+        widget=forms.EmailInput(attrs={
             'placeholder': 'Escriba su email',
-            'pattern': '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$'
+            'pattern': '[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'
         })
     )
 
-
     address = forms.CharField(
         max_length=100,
-        widget=forms.TextInput( attrs={
+        widget=forms.TextInput(attrs={
             'placeholder': 'Escriba su dirección',
         })
     )
@@ -43,15 +44,16 @@ class ContactForm(forms.Form):
 
     def send_mail(self):
         data = self.cleaned_data
+
         send_mail(
-
-            'Informacion de contacto',
-            f"Nombre: {data.get('name')}\n" + 
-            f"Celular: {data.get('movil_phone')}\n" + 
-            f"Email: {data.get('email')}\n" + 
-            f"Direccion: {data.get('address')}",
-
-            data.get('correo_electronico'),
-            ["wololo@secretaria.com"],
+            subject='Informacion de contacto',
+            message=f'''
+                Nombre: {data.get('name')}
+                Celular: {data.get('movil_phone')}
+                Email: {data.get('email')}
+                Direccion: {data.get('address')}
+            '''.replace("    ", ""),
+            from_email = None,
+            recipient_list = [DEFAULT_TO_EMAIL],
             fail_silently=False
         )

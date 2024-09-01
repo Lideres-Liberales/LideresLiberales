@@ -161,6 +161,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # EmailBackend
 # https://docs.djangoproject.com/en/4.2/topics/email/
 
+
+DEFAULT_TO_EMAIL = getenv('EM_TO_EMAIL') or None
+
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
     EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
+else:
+    EMAIL_HOST = getenv('EM_HOST') or ''
+    EMAIL_HOST_USER = getenv('EM_HOST_USER') or ''
+    EMAIL_HOST_PASSWORD = getenv('EM_HOST_PASSWORD') or ''
+    EMAIL_PORT = getenv('EM_PORT') or ''
+    EMAIL_USE_TLS = getenv('EM_USE_TLS') or ''
+    EMAIL_USE_SSL = getenv('EM_USE_SSL') or ''
+    DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
