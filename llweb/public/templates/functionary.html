@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/cabinet.css' %}">
+<link rel="stylesheet" href="{% static 'css/functionary-detail.css' %}">
+{% endblock %}
+
+{% block javascript %}
+<script src="{% static 'js/modal.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<main>
+    <!-- avatar scheme -->
+    {% for nivel, functionaries in functionaries.items %}
+    <div class="cabinet-row">
+        {% for functionary in functionaries %}
+        <div class="avatar-box" data-bs-toggle="modal" data-bs-target="#functionary-modal"
+            data-url="{{ request.build_absolute_uri }}/{{ functionary.id }}"
+        >
+            <img class="avatar-img" src="{{ functionary.avatar_image.url }}" alt="..."
+                data-border-color="{{ functionary.political_party.color }}"
+            >
+            <div class="avatar-name">{{ functionary.name }}</div>
+            <div class="avatar-pos">{{ functionary.position }}</div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+
+    <!-- political party rferences -->
+    {% comment %} 
+    <div class="color-list">
+        {% for politicalParty in politicalsParties %}
+            <div class="color-item">
+                <span class="color-box" data-box-color="{{politicalParty.color}}"></span>
+                {{ politicalParty.denomination }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endcomment %}
+   
+
+
+    <!-- modal with details of the functionary -->
+    <div class="modal fade" id="functionary-modal" tabindex="-1" aria-labelledby="functionaryModalLabel" aria-hidden="true" data-bs-dismiss="modal">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex flex-column"></div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
