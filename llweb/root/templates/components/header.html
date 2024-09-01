@@ -28,6 +28,7 @@
 
     </nav>
 
+    {% if '/prensa' in request.path  %}
     <div id="nav-search" class="nav-search d-frex-row">
 
         <form id="nav-search-collapse" class="collapse-h" action="{{ form_action }}">
@@ -45,5 +46,6 @@
         </button>
 
     </div>
+    {% endif %}
 
 </header>

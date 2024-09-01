@@ -1,6 +1,8 @@
+from django.urls import reverse_lazy
 from django.contrib import messages
 
 from django.views.generic.base import TemplateView
+from django.views.generic.edit import FormView
 
 
 class Home(TemplateView):
@@ -11,9 +13,6 @@ class Cabinet(TemplateView):
     template_name = 'cabinet.html'
 
 
-class Join(TemplateView):
-    template_name = 'join.html'
-
-
 class Events(TemplateView):
     template_name = 'events.html'
+    context_object_name = 'eventos'
