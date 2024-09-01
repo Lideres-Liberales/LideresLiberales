@@ -8,6 +8,18 @@ main {
     --card-zise: calc(19rem + 2 * var(--border));
 }
 
+/* #region navbar */
+.menu-btn {
+    margin-left: calc(100% - 2 * var(--nav-btn-576) - 0.5 * var(--nav-h));
+}
+
+@media (min-width:576px) {
+    .menu-btn {
+        margin-left: calc(100% - 2 * var(--nav-btn-992) - 0.5 * var(--nav-h));
+    }
+}
+/* #end region */
+
 /* #region separator */
 .separator {
     background-color: #0f172a;

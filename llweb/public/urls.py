@@ -13,11 +13,6 @@ urlpatterns = [
         name='cabinet'
     ),
     path(
-        route='sumate',
-        view=Join.as_view(),
-        name='join'
-    ),
-    path(
         route='eventos',
         view=Calendar.as_view(),
         name='events'
