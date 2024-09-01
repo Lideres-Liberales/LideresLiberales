@@ -462,22 +462,6 @@ def set_up(apps, scheme_editor):
     for functionary in functionaries:
         functionary.save()
 
-    # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    # % Root                                                                  %
-    # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    root = User(
-        username='root',
-        first_name='root',
-        last_name='root',
-        email='root@root.com',
-        is_superuser=True,
-        is_staff=True,
-        is_active=True,
-    )
-
-    root.set_password('root')
-    root.save()
-
 
 class Migration(migrations.Migration):
     dependencies = [
