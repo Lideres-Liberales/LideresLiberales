@@ -18,11 +18,6 @@ urlpatterns = [
         name='join'
     ),
     path(
-        route='prensa',
-        view=News.as_view(),
-        name='news'
-    ),
-    path(
         route='eventos',
         view=Calendar.as_view(),
         name='events'

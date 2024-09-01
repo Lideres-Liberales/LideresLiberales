@@ -27,9 +27,10 @@
     {% block content %}{% endblock %}
     {% include "components/footer.html" %}
 
-    {% block javascript %}{% endblock %}
+    <script src="{% static 'js/tools.js' %}"></script>
     <script src="{% static 'js/nav-bar.js' %}"></script>
     <script src="{% static 'externals/bootstrap/js/bootstrap.min.js' %}"></script>
+    {% block javascript %}{% endblock %}
 </body>
 
 </html>

@@ -65,8 +65,8 @@ class Migration(migrations.Migration):
                 ('modification', models.DateTimeField(auto_now=True)),
             ],
             options={
-                'verbose_name': 'Mienbro',
-                'verbose_name_plural': 'Mienbros',
+                'verbose_name': 'Miembro',
+                'verbose_name_plural': 'Miembros',
             },
             bases=('auth.user',),
             managers=[
@@ -77,7 +77,7 @@ class Migration(migrations.Migration):
             name='Profile',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(blank=True, null=True, upload_to='seguridad', verbose_name='Imagen')),
+                ('image', models.ImageField(blank=True, null=True, upload_to='profiles', verbose_name='Imagen')),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='profile', to=settings.AUTH_USER_MODEL)),
             ],
         ),
