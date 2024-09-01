@@ -65,12 +65,8 @@
             {% for field in form %}
                 <div class="pt-1 pb-2">
                     {{ field }}
-
-                    {% for error in field.errors %}
-                        <div class="invalid-feedback">{{ error }}</div>
-                    {% endfor %}
-
-                    <div id="{{ field.auto_id }}_error" class="invalid-feedback"></div>
+                    {% include "components/invalid_feedback_back.html" %}
+                    {% include "components/invalid_feedback_front.html" with field=field %}
                 </div>
             {% endfor %}
 
