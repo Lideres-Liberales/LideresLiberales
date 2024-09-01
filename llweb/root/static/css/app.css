@@ -165,17 +165,10 @@ main {
     font-family: "Montserrat", sans-serif;
 }
 
-
-
-
-
-
-/****************************************************/
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    /* min-width: 160px; */
     z-index: 1;
     padding: 0;
     margin: 0;
@@ -208,9 +201,6 @@ main {
     top: 100%;
     left: 0;
 }
-
-
-
 
 .nav-search {
     background-color: white;
