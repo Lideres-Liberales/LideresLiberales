@@ -1,4 +1,4 @@
-const validator = new FormValidator({
+new FormValidator({
     formId: "form-contact",
     validationTranslator: new ValidationTranslator("es")
 });

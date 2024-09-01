@@ -121,7 +121,7 @@ main {
     height: var(--nav-btn-576);
 
     margin: calc(0.5 * (var(--nav-icon-576) - var(--nav-btn-576))) 0;
-    margin-left: calc(100% - 2 * var(--nav-btn-576) - 0.5 * var(--nav-h));
+    margin-left: calc(100% - var(--nav-btn-576));
 
     padding: 0;
 }
@@ -228,7 +228,7 @@ main {
 
     .menu-btn {
         margin: calc(0.5 * (var(--nav-icon-992) - var(--nav-btn-992))) var(--nav-v);
-        margin-left: calc(100% - 2 * var(--nav-btn-992) - 0.5 * var(--nav-h));
+        margin-left: calc(100% - var(--nav-btn-992));
     }
 
     .nav-search {
