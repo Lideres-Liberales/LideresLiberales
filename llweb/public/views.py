@@ -104,13 +104,6 @@ class CouncillorDetailView(FunctionaryDetailView):
 
 
 # -----------------------------------------------------------------------------
-class Join(TemplateView):
-    template_name = 'join.html'
-
-
-class News(TemplateView):
-    template_name = 'news.html'
-
-
 class Events(TemplateView):
     template_name = 'events.html'
+    context_object_name = 'eventos'

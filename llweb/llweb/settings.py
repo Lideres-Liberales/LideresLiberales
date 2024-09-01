@@ -14,6 +14,9 @@ from os import getenv
 from pathlib import Path
 from dotenv import load_dotenv
 
+from django.contrib.messages import constants as messages
+
+
 # Load enviroment variables
 load_dotenv()
 
@@ -39,6 +42,10 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'root.apps.RootConfig',
     'public.apps.PublicConfig',
+    'users.apps.UsersConfig',
+    'press.apps.PressConfig',
+    'join.apps.JoinConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -78,6 +85,18 @@ TEMPLATES = [
 WSGI_APPLICATION = 'llweb.wsgi.application'
 
 
+# The messages framework
+# https://docs.djangoproject.com/en/5.0/ref/contrib/messages/
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-secondary',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
+
+
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
@@ -91,7 +110,6 @@ DATABASES = {
         'PORT': getenv('DB_PORT'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -142,6 +160,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # EmailBackend
 # https://docs.djangoproject.com/en/4.2/topics/email/
 
+
+DEFAULT_TO_EMAIL = getenv('EM_TO_EMAIL') or None
+
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
     EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
+else:
+    EMAIL_HOST = getenv('EM_HOST') or ''
+    EMAIL_HOST_USER = getenv('EM_HOST_USER') or ''
+    EMAIL_HOST_PASSWORD = getenv('EM_HOST_PASSWORD') or ''
+    EMAIL_PORT = getenv('EM_PORT') or ''
+    EMAIL_USE_TLS = getenv('EM_USE_TLS') or ''
+    EMAIL_USE_SSL = getenv('EM_USE_SSL') or ''
+    DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

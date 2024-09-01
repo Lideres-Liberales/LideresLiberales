@@ -1,0 +1,11 @@
+.vTextField, .vURLField {
+    width: 100%;
+}
+
+.related-widget-wrapper {
+    flex-wrap: nowrap;
+}
+
+.related-widget-wrapper select {
+    width: 100%;
+}

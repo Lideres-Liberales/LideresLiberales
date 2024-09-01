@@ -67,17 +67,6 @@ urlpatterns = [
         view=CouncillorDetailView.as_view(),
         name='councillor_details'
     ),
-
-    path(
-        route='sumate',
-        view=Join.as_view(),
-        name='join'
-    ),
-    path(
-        route='prensa',
-        view=News.as_view(),
-        name='news'
-    ),
     path(
         route='eventos',
         view=Events.as_view(),
