@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="separator"></div>
+
+    <div id="carousel_id" class="carousel slide my-3" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carousel_id" data-bs-slide-to="0" aria-label="Slide 1" class="active" aria-current="true"></button>
+            <button type="button" data-bs-target="#carousel_id" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carousel_id" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carousel_id" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carousel_id" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            <button type="button" data-bs-target="#carousel_id" data-bs-slide-to="5" aria-label="Slide 6"></button>
+        </div>
+
+        <div class="carousel-inner">
+
+            <div class="carousel-item carousel-comp active">
+                <img class="carousel-image" src="{% static 'img/placeholder.jpg' %}" alt="liberes_liberales">
+                <p class="carousel-paragraph">
+                    Tanto en linea como de manera presencial, organizamos diversos eventos
+                    y encuentros para fomentar la union y cooperacion del grupo.
+                </p>
+            </div>
+
+            <div class="carousel-item carousel-comp">
+                <img class="carousel-image" src="{% static 'img/placeholder.jpg' %}" alt="liberes_liberales">
+                <p class="carousel-paragraph">
+                    La agrupacion Lideres Liberales representa un movimiento que busca
+                    influir en la cultura a traves de las ideas liberales fomentando el
+                    desarrollo y la creacion de nuevos lideres que puedan guiar hacia
+                    un futuro prometedor.
+                </p>
+            </div>
+
+            <div class="carousel-item carousel-comp">
+                <img class="carousel-image" src="{% static 'img/placeholder.jpg' %}" alt="liberes_liberales">
+                <p class="carousel-paragraph">
+                    Contamos con presencia en todo el pais y promovemos nuestras ideas a
+                    traves de la militancia libre, siempre apoyando a figuras y causas que
+                    encarnan los principios de la libertad.
+                </p>
+            </div>
+
+            <div class="carousel-item carousel-comp">
+                <img class="carousel-image" src="{% static 'img/placeholder.jpg' %}" alt="liberes_liberales">
+                <p class="carousel-paragraph">
+                    Tambien brindamos apoyo social, comprometidos en la batalla cultural
+                    para demostrar que la libertad individual incluye hacer el bien a los
+                    demas.
+                </p>
+            </div>
+
+            <div class="carousel-item carousel-comp">
+                <img class="carousel-image" src="{% static 'img/placeholder.jpg' %}" alt="liberes_liberales">
+                <p class="carousel-paragraph">
+                    Tanto en linea como de manera presencial, organizamos diversos eventos y
+                    encuentros para fomentar la union y cooperacion del grupo.
+                </p>
+            </div>
+
+            <div class="carousel-item carousel-comp">
+                <img class="carousel-image" src="{% static 'img/placeholder.jpg' %}" alt="liberes_liberales">
+                <p class="carousel-paragraph">
+                    La agrupacion Lideres Liberales representa un movimiento que busca
+                    influir en la cultura a traves de las ideas liberales fomentando el
+                    desarrollo y la creacion de nuevos lideres que puedan guiar hacia
+                    un futuro prometedor.
+                </p>
+            </div>
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel_id" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel_id" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+
+    </div>
+
+    <div class="main-button-container">
+        <div class="box-button">sumate a lideres liberales</div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="home-boxes">
+
+        <div class="box-item">
+            <div class="box-image">
+                <img src="{% static 'img/Logo-Oficial-mono-1024x1024.png' %}" alt="liberes_liberales">
+            </div>
+            <div class="box-body">
+                <h2 class="box-title">milita desde internet</h2>
+                <p class="box-text">
+                    lideres liberales cuenta con presencia en todas las redes sociales y es por eso que
+                    participamos activamente promoviendo el dialogo y el DEBATE, asi como encuentros y
+                    eventos virtuales de interes y relevancia para los seguidores de las ideas de la
+                    libertad
+                </p>
+                <div class="box-button-container">
+                    <div class="box-button">próximos eventos online</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-item">
+            <div class="box-image">
+                <img src="{% static 'img/Logo-Oficial-mono-1024x1024.png' %}" alt="liberes_liberales">
+            </div>
+            <div class="box-body">
+                <h2 class="box-title">milita en la calle</h2>
+                <p class="box-text">
+                    fomentamos la militancia en la calle es por eso que contamos con varios puntos de
+                    encuentro actividades y presencia en cada acto de figuras politicas o causas a favor
+                    de las ideas de la libertad.
+                </p>
+                <div class="box-button-container">
+                    <div class="box-button">próximos eventos presenciales</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-item">
+            <div class="box-image">
+                <img src="{% static 'img/Logo-Oficial-mono-1024x1024.png' %}" alt="liberes_liberales">
+            </div>
+            <div class="box-body">
+                <h2 class="box-title">diario lideres liberales</h2>
+                <p class="box-text">
+                    mantenete informado de las ultimas novedades a traves de nuestro newsletter en el
+                    que podras estar al tanto de los ultimos sucesos politicos y de la agrupacion.
+                </p>
+                <div class="box-button-container">
+                    <div class="box-button">subscribite al newsletter</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</main>
+{% endblock %}
