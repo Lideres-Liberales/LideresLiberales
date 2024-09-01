@@ -9,7 +9,7 @@ from .forms import ContactForm
 class Join(FormView):
     template_name = 'join.html'
     form_class = ContactForm
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('join')
 
     def form_valid(self, form):
         try:

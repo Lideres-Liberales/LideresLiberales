@@ -14,6 +14,9 @@ from os import getenv
 from pathlib import Path
 from dotenv import load_dotenv
 
+from django.contrib.messages import constants as messages
+
+
 # Load enviroment variables
 load_dotenv()
 
@@ -80,6 +83,18 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'llweb.wsgi.application'
+
+
+# The messages framework
+# https://docs.djangoproject.com/en/5.0/ref/contrib/messages/
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-secondary',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
 
 
 # Database

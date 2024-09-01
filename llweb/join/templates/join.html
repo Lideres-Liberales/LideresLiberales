@@ -11,6 +11,8 @@
 
 {% block content %}
 <main>
+    {% include "components/alert_list.html" %}
+
     <h1 style="text-align: center;">Lideres Liberales en Argentina</h1>
     <br>
     <p style="text-align: center;">Tenemos como objetivo ser una agrupación nacional. Podes encontrarnos presencialmente
@@ -32,7 +34,7 @@
                             {{ field }}
 
                             {% for error in field.errors %}
-                                <div class="invalid-feedback">{{ error }}</div>
+                            <div class="invalid-feedback">{{ error }}</div>
                             {% endfor %}
 
                             <div id="{{ field.auto_id }}_error" class="invalid-feedback"></div>
